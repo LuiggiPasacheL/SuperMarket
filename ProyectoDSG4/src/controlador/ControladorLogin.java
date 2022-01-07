@@ -39,7 +39,7 @@ public class ControladorLogin {
                 } else {
                     Sistema.conectado = sistemaUsuario.verificarSesion(vista.txtUsuario.getText(), vista.txtContraseña.getText());
                     if (Sistema.conectado != null) {
-                        System.out.println("Correcto");
+                        System.out.println("Correcto, Bienvenido "+sistemaUsuario.datosUsuario(usuario).getNombre());
                     } else {
                         JOptionPane.showMessageDialog(vista, "Campo(s) incorrecto(s), ingrese sus credenciales nuevamente");
                     }

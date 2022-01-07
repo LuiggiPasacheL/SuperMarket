@@ -33,7 +33,7 @@ public class Sistema {
         return users.get(i);
     }
 
-    public Usuario verificarSesion(String login, String contraseña) {  //verificarSesión
+    public Usuario verificarSesion(String login, String contraseña) { 
         Usuario result = null;
         for (int i = 0; i < this.tamañoUsuario(); i++) {
             if (this.buscarUsuario(i).iniciarSesion(login, contraseña)) {
@@ -51,6 +51,17 @@ public class Sistema {
             }
         }
         return true;
+    }
+    
+    public Usuario datosUsuario(String usuario){
+        Usuario user = null;
+        for (int i = 0; i < this.tamañoUsuario(); i++) {
+            if (usuario.equals(this.buscarUsuario(i).getUser())) {
+                user = this.buscarUsuario(i);
+                break;
+            }
+        }
+        return user;
     }
     
     public boolean faltanDatos() {
