@@ -20,6 +20,7 @@ import vista.vistaRegistro;
  * @author OSCAR
  */
 public class ControladorRegistro {
+
     private vistaRegistro vista;
     private Sistema sistemaUsuario;
     private ArrayList<Usuario> usuario;
@@ -38,19 +39,25 @@ public class ControladorRegistro {
                 String correo = vista.txtCorreo.getText();
                 String direccion = vista.txtDireccion.getText();
                 String telefono = vista.txtTelefono.getText();
-                
-                Usuario usuario = new Usuario(nombre, apellido, user, contraseña, direccion, telefono, correo);
-                sistemaUsuario.registrarUsuario(usuario);
-                
-                vista.dispose();
-                vistaLogin abrir = new vistaLogin();
-                Sistema s = new Sistema();
-                ControladorLogin cabrir = new ControladorLogin(abrir, users, s);
-                cabrir.iniciar();
-                
+                if ("".equals(nombre) || "".equals(apellido) || "".equals(user) || "".equals(contraseña) || "".equals(correo) || "".equals(direccion) || "".equals(telefono)) {
+                    JOptionPane.showMessageDialog(vista, "Campo(s) vacio(s), ingrese sus datos nuevamente");
+                } else {
+                    if (sistemaUsuario.validarDatos(user)) {
+                        Usuario usuario = new Usuario(nombre, apellido, user, contraseña, direccion, telefono, correo);
+                        sistemaUsuario.registrarUsuario(usuario);
+                        vista.dispose();
+                        vistaLogin abrir = new vistaLogin();
+                        Sistema s = new Sistema();
+                        ControladorLogin cabrir = new ControladorLogin(abrir, users, s);
+                        cabrir.iniciar();
+                    } else {
+                        JOptionPane.showMessageDialog(vista, "El usuario ya existe, intentelo nuevamente");
+                    }
+
+                }
             }
         });
-        
+
         this.vista.btnVolver.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -61,12 +68,12 @@ public class ControladorRegistro {
                 cAbrir.iniciar();
             }
         });
-        
+
     }
-    
+
     public void iniciar() {
         vista.setLocationRelativeTo(null);
         vista.setVisible(true);
     }
-    
+
 }

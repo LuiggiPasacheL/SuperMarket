@@ -20,6 +20,7 @@ import vista.vistaRegistro;
  * @author OSCAR
  */
 public class ControladorLogin {
+
     private vistaLogin vista;
     private Sistema sistemaUsuario;
     ArrayList<Usuario> usuario;
@@ -33,16 +34,20 @@ public class ControladorLogin {
             public void actionPerformed(ActionEvent e) {
                 String usuario = vista.txtUsuario.getText();
                 String contraseña = vista.txtContraseña.getText();
-                Sistema.conectado = sistemaUsuario.ingresarUsuario(vista.txtUsuario.getText(), vista.txtContraseña.getText());
-                if (Sistema.conectado != null){
-                    System.out.println("Correcto");
+                if ("".equals(usuario) || "".equals(contraseña)) {
+                    JOptionPane.showMessageDialog(vista, "Campo(s) vacio(s), ingrese sus credenciales nuevamente");
+                } else {
+                    Sistema.conectado = sistemaUsuario.verificarSesion(vista.txtUsuario.getText(), vista.txtContraseña.getText());
+                    if (Sistema.conectado != null) {
+                        System.out.println("Correcto");
+                    } else {
+                        JOptionPane.showMessageDialog(vista, "Campo(s) incorrecto(s), ingrese sus credenciales nuevamente");
+                    }
                 }
-                else{
-                    System.out.println("Incorrecto");
-                }
+
             }
         });
-        
+
         this.vista.btnRegistrarse.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -54,7 +59,7 @@ public class ControladorLogin {
             }
 
         });
-        
+
         this.vista.btnCerrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -63,12 +68,10 @@ public class ControladorLogin {
         });
 
     }
-    
+
     public void iniciar() {
         vista.setLocationRelativeTo(null);
         vista.setVisible(true);
     }
-    
-    
-    
+
 }

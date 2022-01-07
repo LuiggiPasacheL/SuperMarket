@@ -13,36 +13,57 @@ import modelo.Usuario;
  * @author OSCAR
  */
 public class Sistema {
-    
+
     //METODOS USUARIO
     public static Usuario conectado = null;
-    
-    public static ArrayList <Usuario> users = new ArrayList();
 
-    public void registrarUsuario(Usuario usuario){
+    public static ArrayList<Usuario> users = new ArrayList();
+
+    public void registrarUsuario(Usuario usuario) {
         users.add(usuario);
     }
-    
-    public int tamañoUsuario(){
+
+    public int tamañoUsuario() {
         int result;
         result = users.size();
         return result;
     }
-    
-    public Usuario getUsuario(int i){
+
+    public Usuario buscarUsuario(int i) {
         return users.get(i);
     }
-    
-    public Usuario ingresarUsuario( String login, String contraseña){
+
+    public Usuario verificarSesion(String login, String contraseña) {  //verificarSesión
         Usuario result = null;
-        for(int i=0; i< this.tamañoUsuario() ;i++){
-            if ( this.getUsuario(i).iniciarSesion(login, contraseña) ){
-                result = this.getUsuario(i);
+        for (int i = 0; i < this.tamañoUsuario(); i++) {
+            if (this.buscarUsuario(i).iniciarSesion(login, contraseña)) {
+                result = this.buscarUsuario(i);
                 break;
             }
         }
         return result;
     }
     
+    public boolean validarDatos(String usuario){
+        for (int i = 0; i < this.tamañoUsuario(); i++) {
+            if (usuario.equals(this.buscarUsuario(i).getUser())) {
+                return false;
+            }
+        }
+        return true;
+    }
     
+    public boolean faltanDatos() {
+        boolean result = true;
+        for (int i = 0; i < this.tamañoUsuario(); i++) {
+            if ("".equals(buscarUsuario(i).getNombre()) || "".equals(buscarUsuario(i).getApellido())
+                    || "".equals(buscarUsuario(i).getCorreo()) || "".equals(buscarUsuario(i).getDireccion())
+                    || "".equals(buscarUsuario(i).getTelefono()) || "".equals(buscarUsuario(i).getUser())) {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+
 }

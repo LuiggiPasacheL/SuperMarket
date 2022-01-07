@@ -21,7 +21,7 @@ public class Usuario {
     private Boolean conectado;
 
     //CONSTRUCTOR
-    public Usuario(String nombre, String apellido, String user, String contraseña, String direccion, String telefono, String correo) {
+    public Usuario(String nombre, String apellido, String user, String contraseña, String direccion, String telefono, String correo) { //Registrar
         this.nombre = nombre;
         this.apellido = apellido;
         this.user = user;
