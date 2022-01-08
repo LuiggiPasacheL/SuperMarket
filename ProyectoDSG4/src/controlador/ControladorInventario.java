@@ -50,7 +50,7 @@ public class ControladorInventario {
             public void actionPerformed(ActionEvent e) {
                 int fila = vista.tblProd.getSelectedRow();
                 int col = vista.tblProd.getSelectedColumn();
-                String nomProd = vista.tblProd.getValueAt(fila, col).toString();
+                String nomProd = vista.tblProd.getValueAt(fila, 1).toString();
                 sistemaProducto.eliminarProductoxNombre(nomProd);
                 iniciar();
                 limpiarControles();

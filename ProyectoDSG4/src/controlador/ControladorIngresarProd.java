@@ -10,6 +10,7 @@ import static General.Sistema.products;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import modelo.Producto;
 import vista.vistaIngresarProd;
 import vista.vistaInventario;
@@ -38,7 +39,7 @@ public class ControladorIngresarProd {
                 ci.iniciar();
             }
         });
-        
+
         this.vista.btnRegistrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -47,18 +48,23 @@ public class ControladorIngresarProd {
                 String cantidad = vista.txtCant.getText();
                 String precio = vista.txtPre.getText();
                 String tipo = vista.txtTipo.getText();
-                //CONVERSION
-                String cod = String.valueOf(sistemaProducto.asignarCodigo());
-                int cant = Integer.parseInt(cantidad);
-                float pre = Float.valueOf(precio);
-                //DESARROLLO
-                Producto producto = new Producto(cod, nombre, pre, cant, tipo);
-                sistemaProducto.actualizarProducto(producto);
-                vista.dispose();
-                vistaInventario vista = new vistaInventario();
-                Sistema s = new Sistema();
-                ControladorInventario ci = new ControladorInventario(vista, s, products);
-                ci.iniciar();
+                if ("".equals(nombre) || "".equals(cantidad) || "".equals(precio) || "".equals(tipo)) {
+                    JOptionPane.showMessageDialog(vista, "Campo(s) vacio(s), ingrese los datos del producto correctamente");
+                } else {
+                    //CONVERSION
+                    String cod = String.valueOf(sistemaProducto.asignarCodigo());
+                    int cant = Integer.parseInt(cantidad);
+                    float pre = Float.valueOf(precio);
+                    //DESARROLLO
+                    Producto producto = new Producto(cod, nombre, pre, cant, tipo);
+                    sistemaProducto.actualizarProducto(producto);
+                    vista.dispose();
+                    vistaInventario vista = new vistaInventario();
+                    Sistema s = new Sistema();
+                    ControladorInventario ci = new ControladorInventario(vista, s, products);
+                    ci.iniciar();
+                }
+
             }
         });
 
