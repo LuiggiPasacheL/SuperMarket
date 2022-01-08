@@ -31,6 +31,12 @@ public class Usuario {
         this.correo = correo;
         this.conectado = Boolean.FALSE;
     }
+    
+    public Usuario(String user, String contraseña){
+        this.user = user;
+        this.contraseña = contraseña;
+        this.conectado = Boolean.FALSE;
+    }
 
     //METODOS
     public boolean iniciarSesion(String user, String contraseña) {

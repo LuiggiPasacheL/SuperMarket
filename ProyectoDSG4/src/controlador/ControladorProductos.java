@@ -6,7 +6,6 @@
 package controlador;
 
 import General.Sistema;
-import static General.Sistema.admins;
 import static General.Sistema.products;
 import static General.Sistema.users;
 import java.awt.event.ActionEvent;
@@ -17,43 +16,27 @@ import modelo.Producto;
 import vista.vistaIngresarProd;
 import vista.vistaInventario;
 import vista.vistaLogin;
-import vista.vistaLoginAdmin;
+import vista.vistaProductos;
 
 /**
  *
  * @author OSCAR
  */
-public class ControladorInventario {
+public class ControladorProductos {
 
-    private vistaInventario vista;
+    private vistaProductos vista;
     private Sistema sistemaProducto;
     ArrayList<Producto> producto;
 
-    public ControladorInventario(vistaInventario vista, Sistema sistemaProducto, ArrayList<Producto> producto) {
+    public ControladorProductos(vistaProductos vista, Sistema sistemaProducto, ArrayList<Producto> producto) {
         this.vista = vista;
         this.sistemaProducto = sistemaProducto;
         this.producto = producto;
 
-        this.vista.btnNuevo.addActionListener(new ActionListener() {
+        this.vista.btnComprar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                vista.dispose();
-                vistaIngresarProd vista = new vistaIngresarProd();
-                Sistema s = new Sistema();
-                ControladorIngresarProd ci = new ControladorIngresarProd(vista, s, products);
-                ci.iniciar();
-            }
-        });
-
-        this.vista.btnEliminar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int fila = vista.tblProd.getSelectedRow();
-                int col = vista.tblProd.getSelectedColumn();
-                String nomProd = vista.tblProd.getValueAt(fila, col).toString();
-                sistemaProducto.eliminarProductoxNombre(nomProd);
-                iniciar();
-                limpiarControles();
+                
             }
         });
 
@@ -62,9 +45,9 @@ public class ControladorInventario {
             public void actionPerformed(ActionEvent e) {
                 Sistema.conectado.cerrarSesion();
                 vista.dispose();
-                vistaLoginAdmin abrir = new vistaLoginAdmin();
+                vistaLogin abrir = new vistaLogin();
                 Sistema sistemaUsuario = new Sistema();
-                ControladorLoginAdmin cabrir = new ControladorLoginAdmin(abrir, admins, sistemaUsuario);
+                ControladorLogin cabrir = new ControladorLogin(abrir, users, sistemaUsuario);
                 cabrir.iniciar();
             }
         });

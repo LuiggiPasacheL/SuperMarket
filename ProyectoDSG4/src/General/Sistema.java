@@ -19,11 +19,12 @@ public class Sistema {
     public static Usuario conectado = null;
 
     public static ArrayList<Usuario> users = new ArrayList();
+    public static ArrayList<Usuario> admins = new ArrayList();
 
     public void registrarUsuario(Usuario usuario) {
         users.add(usuario);
     }
-
+    //CLIENTE
     public int tamañoUsuario() {
         int result;
         result = users.size();
@@ -59,6 +60,40 @@ public class Sistema {
         for (int i = 0; i < this.tamañoUsuario(); i++) {
             if (usuario.equals(this.buscarUsuario(i).getUser())) {
                 user = this.buscarUsuario(i);
+                break;
+            }
+        }
+        return user;
+    }
+    
+    //ADMIN
+    
+    public int tamañoAdmin() {
+        int result;
+        result = admins.size();
+        return result;
+    }
+
+    public Usuario buscarAdmin(int i) {
+        return admins.get(i);
+    }
+
+    public Usuario verificarSesionAdmin(String login, String contraseña) { 
+        Usuario result = null;
+        for (int i = 0; i < this.tamañoAdmin(); i++) {
+            if (this.buscarAdmin(i).iniciarSesion(login, contraseña)) {
+                result = this.buscarAdmin(i);
+                break;
+            }
+        }
+        return result;
+    }
+    
+    public Usuario datosAdmin(String usuario){
+        Usuario user = null;
+        for (int i = 0; i < this.tamañoAdmin(); i++) {
+            if (usuario.equals(this.buscarAdmin(i).getUser())) {
+                user = this.buscarAdmin(i);
                 break;
             }
         }
