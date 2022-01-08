@@ -45,6 +45,27 @@ public class Producto {
         return tipo;
     }
     
+    //Metodos SET
+
+    public void setId_producto(String id_producto) {
+        this.id_producto = id_producto;
+    }
+
+    public void setNombre_producto(String nombre_producto) {
+        this.nombre_producto = nombre_producto;
+    }
+
+    public void setPrecio(float precio) {
+        this.precio = precio;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
     
     
     

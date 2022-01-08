@@ -6,12 +6,14 @@
 package controlador;
 
 import General.Sistema;
+import static General.Sistema.products;
 import static General.Sistema.users;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
+import vista.vistaInventario;
 import vista.vistaLogin;
 import vista.vistaRegistro;
 
@@ -40,6 +42,12 @@ public class ControladorLogin {
                     Sistema.conectado = sistemaUsuario.verificarSesion(vista.txtUsuario.getText(), vista.txtContraseña.getText());
                     if (Sistema.conectado != null) {
                         System.out.println("Correcto, Bienvenido "+sistemaUsuario.datosUsuario(usuario).getNombre());
+                        vista.dispose();
+                        vistaInventario vista = new vistaInventario();
+                        Sistema s = new Sistema();
+                        ControladorInventario ci = new ControladorInventario(vista, sistemaUsuario, products);
+                        ci.iniciar();
+                        
                     } else {
                         JOptionPane.showMessageDialog(vista, "Campo(s) incorrecto(s), ingrese sus credenciales nuevamente");
                     }
