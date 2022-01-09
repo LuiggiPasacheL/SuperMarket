@@ -161,6 +161,7 @@ public class vistaRegistro extends javax.swing.JFrame {
                     .addGroup(panCredencialesRLayout.createSequentialGroup()
                         .addComponent(lblApellido)
                         .addGap(40, 40, 40)))
+                .addGap(18, 18, 18)
                 .addGroup(panCredencialesRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panCredencialesRLayout.createSequentialGroup()
                         .addGroup(panCredencialesRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -184,7 +185,7 @@ public class vistaRegistro extends javax.swing.JFrame {
                 .addComponent(lblContraseña)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         getContentPane().add(panCredencialesR, java.awt.BorderLayout.CENTER);
