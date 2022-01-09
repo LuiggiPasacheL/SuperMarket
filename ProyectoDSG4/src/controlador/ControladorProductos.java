@@ -36,7 +36,28 @@ public class ControladorProductos {
         this.vista.btnComprar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
+            }
+        });
+
+        this.vista.btnBuscar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String dato = vista.txtBuscar.getText();
+                String[][] datos = sistemaProducto.getDatosBusqueda(dato);
+                String[] cabecera = sistemaProducto.getCabecera();
+                DefaultTableModel modeloProducto = new DefaultTableModel(datos, cabecera);
+                vista.tblProd.setModel(modeloProducto);
+            }
+        });
+
+        this.vista.btnRefrescar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String[][] datos = sistemaProducto.getDatos();
+                String[] cabecera = sistemaProducto.getCabecera();
+                DefaultTableModel modeloProducto = new DefaultTableModel(datos, cabecera);
+                vista.tblProd.setModel(modeloProducto);
             }
         });
 

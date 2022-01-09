@@ -103,7 +103,7 @@ public class vistaInventario extends javax.swing.JFrame {
         panBotones.setBackground(new java.awt.Color(255, 255, 255));
         panBotones.setPreferredSize(new java.awt.Dimension(700, 100));
 
-        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRegresar_.png"))); // NOI18N
+        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCerrarSesion_.jpg"))); // NOI18N
 
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnNuevo_.png"))); // NOI18N
 

@@ -24,6 +24,7 @@ public class Sistema {
     public void registrarUsuario(Usuario usuario) {
         users.add(usuario);
     }
+
     //CLIENTE
     public int tamañoUsuario() {
         int result;
@@ -35,7 +36,7 @@ public class Sistema {
         return users.get(i);
     }
 
-    public Usuario verificarSesion(String login, String contraseña) { 
+    public Usuario verificarSesion(String login, String contraseña) {
         Usuario result = null;
         for (int i = 0; i < this.tamañoUsuario(); i++) {
             if (this.buscarUsuario(i).iniciarSesion(login, contraseña)) {
@@ -45,8 +46,8 @@ public class Sistema {
         }
         return result;
     }
-    
-    public boolean validarDatos(String usuario){
+
+    public boolean validarDatos(String usuario) {
         for (int i = 0; i < this.tamañoUsuario(); i++) {
             if (usuario.equals(this.buscarUsuario(i).getUser())) {
                 return false;
@@ -54,8 +55,8 @@ public class Sistema {
         }
         return true;
     }
-    
-    public Usuario datosUsuario(String usuario){
+
+    public Usuario datosUsuario(String usuario) {
         Usuario user = null;
         for (int i = 0; i < this.tamañoUsuario(); i++) {
             if (usuario.equals(this.buscarUsuario(i).getUser())) {
@@ -65,9 +66,8 @@ public class Sistema {
         }
         return user;
     }
-    
+
     //ADMIN
-    
     public int tamañoAdmin() {
         int result;
         result = admins.size();
@@ -78,7 +78,7 @@ public class Sistema {
         return admins.get(i);
     }
 
-    public Usuario verificarSesionAdmin(String login, String contraseña) { 
+    public Usuario verificarSesionAdmin(String login, String contraseña) {
         Usuario result = null;
         for (int i = 0; i < this.tamañoAdmin(); i++) {
             if (this.buscarAdmin(i).iniciarSesion(login, contraseña)) {
@@ -88,8 +88,8 @@ public class Sistema {
         }
         return result;
     }
-    
-    public Usuario datosAdmin(String usuario){
+
+    public Usuario datosAdmin(String usuario) {
         Usuario user = null;
         for (int i = 0; i < this.tamañoAdmin(); i++) {
             if (usuario.equals(this.buscarAdmin(i).getUser())) {
@@ -99,7 +99,7 @@ public class Sistema {
         }
         return user;
     }
-    
+
     public boolean faltanDatos() {
         boolean result = true;
         for (int i = 0; i < this.tamañoUsuario(); i++) {
@@ -112,7 +112,7 @@ public class Sistema {
         }
         return result;
     }
-    
+
     //METODOS PRODUCTO
     public static ArrayList<Producto> products = new ArrayList();
     private final String[] cabecera = {"ID", "NOMBRE", "CANTIDAD", "TIPO", "PRECIO"};
@@ -131,24 +131,24 @@ public class Sistema {
     public Producto getProducto(int i) {
         return products.get(i);
     }
-    
-    public String[][] getDatos(){
+
+    public String[][] getDatos() {
         String[][] result = new String[tamañoProducto()][5];
-        for(int i=0; i<tamañoProducto(); i++){
+        for (int i = 0; i < tamañoProducto(); i++) {
             result[i][0] = getProducto(i).getId_producto();
             result[i][1] = getProducto(i).getNombre_producto();
             result[i][2] = String.valueOf(getProducto(i).getCantidad());
             result[i][3] = getProducto(i).getTipo();
             result[i][4] = Float.toString(getProducto(i).getPrecio());
-        }  
-        return result;      
+        }
+        return result;
     }
-    
+
     public String[] getCabecera() {
         return this.cabecera;
     }
-    
-    public void eliminarProductoxNombre(String nomProd){
+
+    public void eliminarProductoxNombre(String nomProd) {
         Usuario user = null;
         for (int i = 0; i < this.tamañoProducto(); i++) {
             if (nomProd.equals(this.getProducto(i).getNombre_producto())) {
@@ -157,10 +157,23 @@ public class Sistema {
             }
         }
     }
-    
-    public int asignarCodigo(){
+
+    public int asignarCodigo() {
         cod = this.tamañoProducto() + 1;
         return cod;
     }
 
+    public String[][] getDatosBusqueda(String dato) {
+        String[][] result = new String[tamañoProducto()][5];
+        for (int i = 0; i < tamañoProducto(); i++) {
+            if (dato.equalsIgnoreCase(getProducto(i).getNombre_producto())) {
+                result[i][0] = getProducto(i).getId_producto();
+                result[i][1] = getProducto(i).getNombre_producto();
+                result[i][2] = String.valueOf(getProducto(i).getCantidad());
+                result[i][3] = getProducto(i).getTipo();
+                result[i][4] = Float.toString(getProducto(i).getPrecio());
+            }
+        }
+        return result;
+    }
 }
