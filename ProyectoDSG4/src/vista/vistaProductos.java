@@ -40,6 +40,7 @@ public class vistaProductos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panTitulo.setBackground(new java.awt.Color(255, 255, 255));
+        panTitulo.setPreferredSize(new java.awt.Dimension(700, 100));
 
         lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         lblTitulo.setText("Productos");
@@ -49,21 +50,22 @@ public class vistaProductos extends javax.swing.JFrame {
         panTituloLayout.setHorizontalGroup(
             panTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panTituloLayout.createSequentialGroup()
-                .addGap(369, 369, 369)
+                .addGap(226, 226, 226)
                 .addComponent(lblTitulo)
-                .addContainerGap(415, Short.MAX_VALUE))
+                .addContainerGap(558, Short.MAX_VALUE))
         );
         panTituloLayout.setVerticalGroup(
             panTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panTituloLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addContainerGap()
                 .addComponent(lblTitulo)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         getContentPane().add(panTitulo, java.awt.BorderLayout.PAGE_START);
 
         panTabla.setBackground(new java.awt.Color(255, 255, 255));
+        panTabla.setPreferredSize(new java.awt.Dimension(700, 500));
 
         tblProd.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -83,51 +85,61 @@ public class vistaProductos extends javax.swing.JFrame {
         panTablaLayout.setHorizontalGroup(
             panTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panTablaLayout.createSequentialGroup()
-                .addGap(278, 278, 278)
+                .addGap(116, 116, 116)
                 .addComponent(tablaProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(298, Short.MAX_VALUE))
+                .addContainerGap(460, Short.MAX_VALUE))
         );
         panTablaLayout.setVerticalGroup(
             panTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panTablaLayout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
+            .addGroup(panTablaLayout.createSequentialGroup()
+                .addGap(68, 68, 68)
                 .addComponent(tablaProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(panTabla, java.awt.BorderLayout.CENTER);
 
         panBotones.setBackground(new java.awt.Color(255, 255, 255));
+        panBotones.setPreferredSize(new java.awt.Dimension(700, 100));
 
-        btnVolver.setText("Volver");
+        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRegresar_.png"))); // NOI18N
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
-        btnComprar.setText("Comprar");
+        btnComprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnComprar_.png"))); // NOI18N
 
         javax.swing.GroupLayout panBotonesLayout = new javax.swing.GroupLayout(panBotones);
         panBotones.setLayout(panBotonesLayout);
         panBotonesLayout.setHorizontalGroup(
             panBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panBotonesLayout.createSequentialGroup()
-                .addGap(389, 389, 389)
-                .addComponent(btnVolver)
-                .addGap(103, 103, 103)
-                .addComponent(btnComprar)
-                .addContainerGap(384, Short.MAX_VALUE))
+                .addGap(174, 174, 174)
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnComprar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(436, Short.MAX_VALUE))
         );
         panBotonesLayout.setVerticalGroup(
             panBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panBotonesLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(36, 36, 36)
                 .addGroup(panBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVolver)
-                    .addComponent(btnComprar))
-                .addContainerGap(24, Short.MAX_VALUE))
+                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnComprar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         getContentPane().add(panBotones, java.awt.BorderLayout.SOUTH);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
