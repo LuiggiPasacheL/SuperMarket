@@ -21,6 +21,9 @@ public class Sistema {
     public static ArrayList<Usuario> users = new ArrayList();
     public static ArrayList<Usuario> admins = new ArrayList();
 
+    
+    public Sistema(){}
+    
     public void registrarUsuario(Usuario usuario) {
         users.add(usuario);
     }
@@ -176,5 +179,12 @@ public class Sistema {
         }
         return result;
     }
+    
+    public void vaciar(){
+        users.removeAll(users);
+        admins.removeAll(admins);
+        products.removeAll(products);
+    }
+    
     //TERMINAR TEST, TRY CATCH
 }
