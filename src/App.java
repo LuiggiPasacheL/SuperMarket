@@ -7,6 +7,7 @@ import controlador.ControladorLogin;
 import controlador.ControladorTipoUsuario;
 import modelo.Producto;
 import modelo.Usuario;
+import modelo.usuario.Administrador;
 import vista.vistaLogin;
 import vista.vistaTipoUsuario;
 
@@ -28,17 +29,17 @@ public class App {
     public static void main(String[] args) {
         
         //Creacion de administradores
-        Usuario admin_1 = new Usuario("oscar.yanfer", "admin1");
+        Administrador admin_1 = new Administrador("oscar.yanfer", "admin1");
+        Administrador admin_2 = new Administrador("luiggi", "123456");
+        Administrador admin_3 = new Administrador("diego.montalvo", "admin3");
+        Administrador admin_4 = new Administrador("rodrigo.reyes", "admin4");
+        Administrador admin_5 = new Administrador("juan.alfaro", "admin5");
+
         admins.add(admin_1);
-        Usuario admin_2 = new Usuario("luiggi.pasache", "admin2");
         admins.add(admin_2);
-        Usuario admin_3 = new Usuario("diego.montalvo", "admin3");
         admins.add(admin_3);
-        Usuario admin_4 = new Usuario("rodrigo.reyes", "admin4");
         admins.add(admin_4);
-        Usuario admin_5 = new Usuario("juan.alfaro", "admin5");
         admins.add(admin_5);
-        
         
         //Creacion de productos
         Producto p1 = new Producto("1", "Detergente", (float) 2.0, 12, "Articulos de limpieza");

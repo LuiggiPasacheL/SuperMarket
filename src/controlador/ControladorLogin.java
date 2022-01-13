@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
+import modelo.usuario.Cliente;
 import vista.vistaInventario;
 import vista.vistaLogin;
 import vista.vistaProductos;
@@ -27,12 +28,10 @@ public class ControladorLogin {
 
     private vistaLogin vista;
     private Sistema sistemaUsuario;
-    ArrayList<Usuario> usuario;
 
-    public ControladorLogin(vistaLogin vista, ArrayList<Usuario> usuario, Sistema sistemaUsuario) {
+    public ControladorLogin(vistaLogin vista, Sistema sistemaUsuario) {
         this.vista = vista;
         this.sistemaUsuario = sistemaUsuario;
-        this.usuario = users;
         this.vista.btnIngresar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -43,11 +42,12 @@ public class ControladorLogin {
                 } else {
                     Sistema.conectado = sistemaUsuario.verificarSesion(vista.txtUsuario.getText(), vista.txtContraseña.getText());
                     if (Sistema.conectado != null) {
-                        System.out.println("Correcto, Bienvenido " + sistemaUsuario.datosUsuario(usuario).getNombre());
+                        Cliente cliente = (Cliente) sistemaUsuario.datosUsuario(usuario);
+                        System.out.println("Correcto, Bienvenido " + cliente.getNombre());
                         vista.dispose();
                         vistaProductos vista = new vistaProductos();
                         Sistema s = new Sistema();
-                        ControladorProductos ci = new ControladorProductos(vista, s, products);
+                        ControladorProductos ci = new ControladorProductos(vista, s);
                         ci.iniciar();
 
                     } else {
@@ -64,7 +64,7 @@ public class ControladorLogin {
                 vista.dispose();
                 vistaRegistro registrar = new vistaRegistro();
                 Sistema s = new Sistema();
-                ControladorRegistro cr = new ControladorRegistro(registrar, users, s);
+                ControladorRegistro cr = new ControladorRegistro(registrar, s);
                 cr.iniciar();
             }
 

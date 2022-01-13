@@ -8,6 +8,7 @@ package General;
 import java.util.ArrayList;
 import modelo.Producto;
 import modelo.Usuario;
+import modelo.producto.IProducto;
 import modelo.usuario.IFactoryUsuario;
 import modelo.usuario.IUsuario;
 
@@ -18,28 +19,13 @@ import modelo.usuario.IUsuario;
 public class Sistema {
 
     //METODOS USUARIO
-    public static Usuario conectado = null;
+    public static IUsuario conectado;
+    public static IProducto productoSeleccionado;
+    public static ArrayList<IUsuario> users = new ArrayList();
+    public static ArrayList<IUsuario> admins = new ArrayList();
     
-    public static ArrayList<IUsuario> iusers = new ArrayList<>();
-
-    public static ArrayList<Usuario> users = new ArrayList();
-    public static ArrayList<Usuario> admins = new ArrayList();
-
-    
-    public Sistema(){}
-    
-    public void registrarUsuario(Usuario usuario) {
+    public void registrarUsuario(IUsuario usuario) {
         users.add(usuario);
-    }
-
-    public void registrarUsuario(IFactoryUsuario factory, String... datos) {
-        try {
-            IUsuario u = factory.crearUsuario(datos);
-            
-            iusers.add(u);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
     }
     
     //CLIENTE
@@ -49,12 +35,12 @@ public class Sistema {
         return result;
     }
 
-    public Usuario buscarUsuario(int i) {
+    public IUsuario buscarUsuario(int i) {
         return users.get(i);
     }
 
-    public Usuario verificarSesion(String login, String contraseña) {
-        Usuario result = null;
+    public IUsuario verificarSesion(String login, String contraseña) {
+        IUsuario result = null;
         for (int i = 0; i < this.tamañoUsuario(); i++) {
             if (this.buscarUsuario(i).iniciarSesion(login, contraseña)) {
                 result = this.buscarUsuario(i);
@@ -73,8 +59,8 @@ public class Sistema {
         return true;
     }
 
-    public Usuario datosUsuario(String usuario) {
-        Usuario user = null;
+    public IUsuario datosUsuario(String usuario) {
+        IUsuario user = null;
         for (int i = 0; i < this.tamañoUsuario(); i++) {
             if (usuario.equals(this.buscarUsuario(i).getUser())) {
                 user = this.buscarUsuario(i);
@@ -91,12 +77,12 @@ public class Sistema {
         return result;
     }
 
-    public Usuario buscarAdmin(int i) {
+    public IUsuario buscarAdmin(int i) {
         return admins.get(i);
     }
 
-    public Usuario verificarSesionAdmin(String login, String contraseña) {
-        Usuario result = null;
+    public IUsuario verificarSesionAdmin(String login, String contraseña) {
+        IUsuario result = null;
         for (int i = 0; i < this.tamañoAdmin(); i++) {
             if (this.buscarAdmin(i).iniciarSesion(login, contraseña)) {
                 result = this.buscarAdmin(i);
@@ -106,8 +92,8 @@ public class Sistema {
         return result;
     }
 
-    public Usuario datosAdmin(String usuario) {
-        Usuario user = null;
+    public IUsuario datosAdmin(String usuario) {
+        IUsuario user = null;
         for (int i = 0; i < this.tamañoAdmin(); i++) {
             if (usuario.equals(this.buscarAdmin(i).getUser())) {
                 user = this.buscarAdmin(i);
@@ -117,6 +103,7 @@ public class Sistema {
         return user;
     }
 
+    /*
     public boolean faltanDatos() {
         boolean result = true;
         for (int i = 0; i < this.tamañoUsuario(); i++) {
@@ -128,7 +115,7 @@ public class Sistema {
             }
         }
         return result;
-    }
+    }*/
 
     //METODOS PRODUCTO
     public static ArrayList<Producto> products = new ArrayList();

@@ -27,34 +27,26 @@ public class ControladorInventario {
 
     private vistaInventario vista;
     private Sistema sistemaProducto;
-    ArrayList<Producto> producto;
 
-    public ControladorInventario(vistaInventario vista, Sistema sistemaProducto, ArrayList<Producto> producto) {
+    public ControladorInventario(vistaInventario vista, Sistema sistemaProducto) {
         this.vista = vista;
         this.sistemaProducto = sistemaProducto;
-        this.producto = producto;
 
-        this.vista.btnNuevo.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                vista.dispose();
-                vistaIngresarProd vista = new vistaIngresarProd();
-                Sistema s = new Sistema();
-                ControladorIngresarProd ci = new ControladorIngresarProd(vista, s, products);
-                ci.iniciar();
-            }
+        this.vista.btnNuevo.addActionListener(e -> {
+            vista.dispose();
+            vistaIngresarProd vista1 = new vistaIngresarProd();
+            Sistema s = new Sistema();
+            ControladorIngresarProd ci = new ControladorIngresarProd(vista1, s, products);
+            ci.iniciar();
         });
 
-        this.vista.btnEliminar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int fila = vista.tblProd.getSelectedRow();
-                int col = vista.tblProd.getSelectedColumn();
-                String nomProd = vista.tblProd.getValueAt(fila, 1).toString();
-                sistemaProducto.eliminarProductoxNombre(nomProd);
-                iniciar();
-                limpiarControles();
-            }
+        this.vista.btnEliminar.addActionListener(e -> {
+            int fila = vista.tblProd.getSelectedRow();
+            int col = vista.tblProd.getSelectedColumn();
+            String nomProd = vista.tblProd.getValueAt(fila, 1).toString();
+            sistemaProducto.eliminarProductoxNombre(nomProd);
+            iniciar();
+            limpiarControles();
         });
 
         this.vista.btnVolver.addActionListener(new ActionListener() {
@@ -64,7 +56,7 @@ public class ControladorInventario {
                 vista.dispose();
                 vistaLoginAdmin abrir = new vistaLoginAdmin();
                 Sistema sistemaUsuario = new Sistema();
-                ControladorLoginAdmin cabrir = new ControladorLoginAdmin(abrir, admins, sistemaUsuario);
+                ControladorLoginAdmin cabrir = new ControladorLoginAdmin(abrir, sistemaUsuario);
                 cabrir.iniciar();
             }
         });

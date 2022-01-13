@@ -24,32 +24,24 @@ public class ControladorTipoUsuario {
 
     public ControladorTipoUsuario(vistaTipoUsuario vista) {
         this.vista = vista;
-        this.vista.btnAdministrador.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                vista.dispose();
-                vistaLoginAdmin abrir = new vistaLoginAdmin();
-                Sistema sistemaUsuario = new Sistema();
-                ControladorLoginAdmin cabrir = new ControladorLoginAdmin(abrir, admins, sistemaUsuario);
-                cabrir.iniciar();
-            }
+
+        this.vista.btnAdministrador.addActionListener(e -> {
+            vista.dispose();
+            vistaLoginAdmin abrir = new vistaLoginAdmin();
+            Sistema sistemaUsuario = new Sistema();
+            ControladorLoginAdmin cabrir = new ControladorLoginAdmin(abrir, sistemaUsuario);
+            cabrir.iniciar();
         });
-        this.vista.btnCliente.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                vista.dispose();
-                vistaLogin abrir = new vistaLogin();
-                Sistema sistemaUsuario = new Sistema();
-                ControladorLogin cabrir = new ControladorLogin(abrir, users, sistemaUsuario);
-                cabrir.iniciar();
-            }
+
+        this.vista.btnCliente.addActionListener(e -> {
+            vista.dispose();
+            vistaLogin abrir = new vistaLogin();
+            Sistema sistemaUsuario = new Sistema();
+            ControladorLogin cabrir = new ControladorLogin(abrir, sistemaUsuario);
+            cabrir.iniciar();
         });
-        this.vista.btnCerrar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
+
+        this.vista.btnCerrar.addActionListener(e -> System.exit(0));
     }
 
     public void iniciar() {

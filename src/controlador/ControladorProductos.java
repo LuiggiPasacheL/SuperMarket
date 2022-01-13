@@ -26,51 +26,37 @@ public class ControladorProductos {
 
     private vistaProductos vista;
     private Sistema sistemaProducto;
-    ArrayList<Producto> producto;
 
-    public ControladorProductos(vistaProductos vista, Sistema sistemaProducto, ArrayList<Producto> producto) {
+    public ControladorProductos(vistaProductos vista, Sistema sistemaProducto) {
         this.vista = vista;
         this.sistemaProducto = sistemaProducto;
-        this.producto = producto;
 
-        this.vista.btnComprar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        this.vista.btnComprar.addActionListener(e -> {
 
-            }
         });
 
-        this.vista.btnBuscar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String dato = vista.txtBuscar.getText();
-                String[][] datos = sistemaProducto.getDatosBusqueda(dato);
-                String[] cabecera = sistemaProducto.getCabecera();
-                DefaultTableModel modeloProducto = new DefaultTableModel(datos, cabecera);
-                vista.tblProd.setModel(modeloProducto);
-            }
+        this.vista.btnBuscar.addActionListener(e -> {
+            String dato = vista.txtBuscar.getText();
+            String[][] datos = sistemaProducto.getDatosBusqueda(dato);
+            String[] cabecera = sistemaProducto.getCabecera();
+            DefaultTableModel modeloProducto = new DefaultTableModel(datos, cabecera);
+            vista.tblProd.setModel(modeloProducto);
         });
 
-        this.vista.btnRefrescar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String[][] datos = sistemaProducto.getDatos();
-                String[] cabecera = sistemaProducto.getCabecera();
-                DefaultTableModel modeloProducto = new DefaultTableModel(datos, cabecera);
-                vista.tblProd.setModel(modeloProducto);
-            }
+        this.vista.btnRefrescar.addActionListener(e -> {
+            String[][] datos = sistemaProducto.getDatos();
+            String[] cabecera = sistemaProducto.getCabecera();
+            DefaultTableModel modeloProducto = new DefaultTableModel(datos, cabecera);
+            vista.tblProd.setModel(modeloProducto);
         });
 
-        this.vista.btnVolver.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Sistema.conectado.cerrarSesion();
-                vista.dispose();
-                vistaLogin abrir = new vistaLogin();
-                Sistema sistemaUsuario = new Sistema();
-                ControladorLogin cabrir = new ControladorLogin(abrir, users, sistemaUsuario);
-                cabrir.iniciar();
-            }
+        this.vista.btnVolver.addActionListener(e -> {
+            Sistema.conectado.cerrarSesion();
+            vista.dispose();
+            vistaLogin abrir = new vistaLogin();
+            Sistema sistemaUsuario = new Sistema();
+            ControladorLogin cabrir = new ControladorLogin(abrir, sistemaUsuario);
+            cabrir.iniciar();
         });
     }
 

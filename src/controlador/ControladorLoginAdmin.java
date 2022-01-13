@@ -6,14 +6,18 @@
 package controlador;
 
 import General.Sistema;
+
 import static General.Sistema.admins;
 import static General.Sistema.products;
 import static General.Sistema.users;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+
 import modelo.Usuario;
+import modelo.usuario.IUsuario;
 import vista.vistaInventario;
 import vista.vistaLogin;
 import vista.vistaLoginAdmin;
@@ -21,52 +25,54 @@ import vista.vistaRegistro;
 import vista.vistaTipoUsuario;
 
 /**
- *
  * @author OSCAR
  */
 public class ControladorLoginAdmin {
 
     private vistaLoginAdmin vista;
-    private Sistema sistemaUsuario;
-    ArrayList<Usuario> usuario;
+    ArrayList<IUsuario> usuario;
 
-    public ControladorLoginAdmin(vistaLoginAdmin vista, ArrayList<Usuario> usuario, Sistema sistemaUsuario) {
+    public ControladorLoginAdmin(vistaLoginAdmin vista, Sistema sistemaUsuario) {
         this.vista = vista;
-        this.sistemaUsuario = sistemaUsuario;
-        this.usuario = admins;
-        this.vista.btnIngresar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String usuario = vista.txtUsuario.getText();
-                String contraseña = vista.txtContraseña.getText();
-                if ("".equals(usuario) || "".equals(contraseña)) {
-                    JOptionPane.showMessageDialog(vista, "Campo(s) vacio(s), ingrese sus credenciales nuevamente");
-                } else {
-                    Sistema.conectado = sistemaUsuario.verificarSesionAdmin(vista.txtUsuario.getText(), vista.txtContraseña.getText());
-                    if (Sistema.conectado != null) {
-                        System.out.println("Correcto, Bienvenido " + sistemaUsuario.datosAdmin(usuario).getUser());
-                        vista.dispose();
-                        vistaInventario vista = new vistaInventario();
-                        Sistema s = new Sistema();
-                        ControladorInventario ci = new ControladorInventario(vista, sistemaUsuario, products);
-                        ci.iniciar();
+        this.usuario = Sistema.admins;
+        this.vista.txtUsuario.requestFocus();
 
-                    } else {
-                        JOptionPane.showMessageDialog(vista, "Campo(s) incorrecto(s), ingrese sus credenciales nuevamente");
-                    }
-                }
+        this.vista.btnIngresar.addActionListener(e -> {
+            String usuario = vista.txtUsuario.getText();
+            String contraseña = vista.txtContraseña.getText();
 
+            if (usuario.isEmpty()) {
+                JOptionPane.showMessageDialog(vista, "Campo usuario vacio, ingrese sus credenciales nuevamente");
+                vista.txtUsuario.requestFocus();
+                return;
             }
+            if(contraseña.isEmpty()) {
+                JOptionPane.showMessageDialog(vista, "Campo contraseña vacio, ingrese sus credenciales nuevamente");
+                vista.txtContraseña.requestFocus();
+                return;
+            }
+
+            Sistema.conectado = sistemaUsuario.verificarSesionAdmin(usuario, contraseña);
+            if(Sistema.conectado == null){
+                JOptionPane.showMessageDialog(vista, "Campo(s) incorrecto(s), ingrese sus credenciales nuevamente");
+                return;
+            }
+
+            JOptionPane.showMessageDialog(vista,"Correcto, Bienvenido " + sistemaUsuario.datosAdmin(usuario).getUser());
+
+            vista.dispose();
+            vistaInventario vista1 = new vistaInventario();
+            Sistema s = new Sistema();
+            ControladorInventario ci = new ControladorInventario(vista1, sistemaUsuario);
+            ci.iniciar();
+
         });
 
-        this.vista.btnCerrar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                vista.dispose();
-                vistaTipoUsuario abrir = new vistaTipoUsuario();
-                ControladorTipoUsuario cabrir = new ControladorTipoUsuario(abrir);
-                cabrir.iniciar();
-            }
+        this.vista.btnCerrar.addActionListener(e -> {
+            vista.dispose();
+            vistaTipoUsuario abrir = new vistaTipoUsuario();
+            ControladorTipoUsuario cabrir = new ControladorTipoUsuario(abrir);
+            cabrir.iniciar();
         });
 
     }

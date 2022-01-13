@@ -12,6 +12,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
+import modelo.usuario.Cliente;
+import modelo.usuario.IUsuario;
+import org.jetbrains.annotations.NotNull;
 import vista.vistaLogin;
 import vista.vistaRegistro;
 
@@ -22,52 +25,79 @@ import vista.vistaRegistro;
 public class ControladorRegistro {
 
     private vistaRegistro vista;
-    private Sistema sistemaUsuario;
-    private ArrayList<Usuario> usuario;
 
-    public ControladorRegistro(vistaRegistro vista, ArrayList<Usuario> usuario, Sistema sistemaUsuario) {
+    public ControladorRegistro(vistaRegistro vista, Sistema sistemaUsuario) {
         this.vista = vista;
-        this.sistemaUsuario = sistemaUsuario;
-        this.usuario = users;
-        this.vista.btnRegistrar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String nombre = vista.txtNombre.getText();
-                String apellido = vista.txtApellido.getText();
-                String user = vista.txtUsuario.getText();
-                String contraseña = vista.txtContraseña.getText();
-                String correo = vista.txtCorreo.getText();
-                String direccion = vista.txtDireccion.getText();
-                String telefono = vista.txtTelefono.getText();
-                if ("".equals(nombre) || "".equals(apellido) || "".equals(user) || "".equals(contraseña) || "".equals(correo) || "".equals(direccion) || "".equals(telefono)) {
-                    JOptionPane.showMessageDialog(vista, "Campo(s) vacio(s), ingrese sus datos nuevamente");
-                } else {
-                    if (sistemaUsuario.validarDatos(user)) {
-                        Usuario usuario = new Usuario(nombre, apellido, user, contraseña, direccion, telefono, correo);
-                        sistemaUsuario.registrarUsuario(usuario);
-                        vista.dispose();
-                        vistaLogin abrir = new vistaLogin();
-                        Sistema s = new Sistema();
-                        ControladorLogin cabrir = new ControladorLogin(abrir, users, s);
-                        cabrir.iniciar();
-                    } else {
-                        JOptionPane.showMessageDialog(vista, "El usuario ya existe, intentelo nuevamente");
-                    }
+        this.vista.btnRegistrar.addActionListener(e -> {
+            String nombre = vista.txtNombre.getText();
+            String apellido = vista.txtApellido.getText();
+            String user = vista.txtUsuario.getText();
+            String contraseña = vista.txtContraseña.getText();
+            String correo = vista.txtCorreo.getText();
+            String direccion = vista.txtDireccion.getText();
+            String telefono = vista.txtTelefono.getText();
 
-                }
+            if (datosVacios(nombre, apellido, user, contraseña, correo, direccion, telefono)){
+                return;
             }
+
+            if (!sistemaUsuario.validarDatos(user)) {
+                JOptionPane.showMessageDialog(vista, "El usuario ya existe, intentelo nuevamente");
+                return;
+            }
+
+            IUsuario usuario1 = new Cliente(nombre, apellido, user, contraseña, direccion, telefono, correo);
+            sistemaUsuario.registrarUsuario(usuario1);
+            vista.dispose();
+            vistaLogin abrir = new vistaLogin();
+            Sistema s = new Sistema();
+            ControladorLogin cabrir = new ControladorLogin(abrir, s);
+            cabrir.iniciar();
+
         });
 
-        this.vista.btnVolver.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                vista.dispose();
-                vistaLogin abrir = new vistaLogin();
-                Sistema s = new Sistema();
-                ControladorLogin cAbrir = new ControladorLogin(abrir, users, s);
-                cAbrir.iniciar();
-            }
+        this.vista.btnVolver.addActionListener(e -> {
+            vista.dispose();
+            vistaLogin abrir = new vistaLogin();
+            Sistema s = new Sistema();
+            ControladorLogin cAbrir = new ControladorLogin(abrir, s);
+            cAbrir.iniciar();
         });
+
+    }
+
+    private boolean datosVacios(String nombre, String apellido, String user, String contraseña,
+                                String correo, String direccion, String telefono){
+
+        String campo = "";
+        if (contraseña.isEmpty()){
+            campo = "contraseña";
+        }
+        if (correo.isEmpty()){
+            campo = "correo";
+        }
+        if (direccion.isEmpty()){
+            campo = "direccion";
+        }
+        if (telefono.isEmpty()){
+            campo = "telefono";
+        }
+        if (nombre.isEmpty()){
+            campo = "nombre";
+        }
+        if (apellido.isEmpty()){
+            campo = "apellido";
+        }
+        if (user.isEmpty()){
+            campo = "usuario";
+        }
+
+        if(!campo.isEmpty()){
+            JOptionPane.showMessageDialog(vista, "Campo " + campo + " vacio, ingrese sus datos nuevamente");
+            return true;
+        }else{
+            return false;
+        }
 
     }
 

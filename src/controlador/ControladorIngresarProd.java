@@ -19,7 +19,7 @@ import vista.vistaInventario;
  *
  * @author OSCAR
  */
-public class ControladorIngresarProd {
+public class ControladorIngresarProd{
 
     private vistaIngresarProd vista;
     private Sistema sistemaProducto;
@@ -35,7 +35,7 @@ public class ControladorIngresarProd {
                 vista.dispose();
                 vistaInventario vista = new vistaInventario();
                 Sistema s = new Sistema();
-                ControladorInventario ci = new ControladorInventario(vista, s, products);
+                ControladorInventario ci = new ControladorInventario(vista, s);
                 ci.iniciar();
             }
         });
@@ -61,7 +61,7 @@ public class ControladorIngresarProd {
                     vista.dispose();
                     vistaInventario vista = new vistaInventario();
                     Sistema s = new Sistema();
-                    ControladorInventario ci = new ControladorInventario(vista, s, products);
+                    ControladorInventario ci = new ControladorInventario(vista, s);
                     ci.iniciar();
                 }
 
@@ -70,7 +70,7 @@ public class ControladorIngresarProd {
 
     }
 
-    public void iniciar() {
+    public void iniciar(){
         vista.setLocationRelativeTo(null);
         vista.setVisible(true);
     }
