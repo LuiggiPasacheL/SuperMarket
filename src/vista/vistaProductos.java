@@ -5,6 +5,8 @@
  */
 package vista;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author OSCAR
@@ -16,6 +18,7 @@ public class vistaProductos extends javax.swing.JFrame {
      */
     public vistaProductos() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/imagenes/icono.png")).getImage());
         this.setLocationRelativeTo(this);
     }
 
@@ -30,6 +33,7 @@ public class vistaProductos extends javax.swing.JFrame {
 
         panTitulo = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         panTabla = new javax.swing.JPanel();
         tablaProducto = new javax.swing.JScrollPane();
         tblProd = new javax.swing.JTable();
@@ -49,12 +53,16 @@ public class vistaProductos extends javax.swing.JFrame {
         lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         lblTitulo.setText("Productos");
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo2_.jpg"))); // NOI18N
+
         javax.swing.GroupLayout panTituloLayout = new javax.swing.GroupLayout(panTitulo);
         panTitulo.setLayout(panTituloLayout);
         panTituloLayout.setHorizontalGroup(
             panTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panTituloLayout.createSequentialGroup()
-                .addGap(226, 226, 226)
+                .addGap(164, 164, 164)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblTitulo)
                 .addContainerGap(558, Short.MAX_VALUE))
         );
@@ -62,7 +70,9 @@ public class vistaProductos extends javax.swing.JFrame {
             panTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panTituloLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTitulo)
+                .addGroup(panTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(lblTitulo))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
@@ -133,7 +143,7 @@ public class vistaProductos extends javax.swing.JFrame {
                     .addComponent(btnRefrescar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tablaProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(panTabla, java.awt.BorderLayout.CENTER);
@@ -195,6 +205,7 @@ public class vistaProductos extends javax.swing.JFrame {
     public javax.swing.JButton btnRefrescar;
     public javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel panBotones;
     private javax.swing.JPanel panTabla;

@@ -5,6 +5,8 @@
  */
 package vista;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author OSCAR
@@ -16,6 +18,7 @@ public class vistaTipoUsuario extends javax.swing.JFrame {
      */
     public vistaTipoUsuario() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/imagenes/icono.png")).getImage());
         this.setLocationRelativeTo(this);
     }
 
@@ -35,6 +38,7 @@ public class vistaTipoUsuario extends javax.swing.JFrame {
         btnCliente = new javax.swing.JButton();
         btnAdministrador = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,28 +99,37 @@ public class vistaTipoUsuario extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo__.jpg"))); // NOI18N
+
         javax.swing.GroupLayout panBotonesLayout = new javax.swing.GroupLayout(panBotones);
         panBotones.setLayout(panBotonesLayout);
         panBotonesLayout.setHorizontalGroup(
             panBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panBotonesLayout.createSequentialGroup()
-                .addGap(240, 240, 240)
-                .addGroup(panBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(btnAdministrador, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(248, Short.MAX_VALUE))
+                .addGroup(panBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panBotonesLayout.createSequentialGroup()
+                        .addGap(191, 191, 191)
+                        .addComponent(jLabel2))
+                    .addGroup(panBotonesLayout.createSequentialGroup()
+                        .addGap(247, 247, 247)
+                        .addGroup(panBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(btnAdministrador, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(209, Short.MAX_VALUE))
         );
         panBotonesLayout.setVerticalGroup(
             panBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panBotonesLayout.createSequentialGroup()
-                .addGap(203, 203, 203)
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
                 .addComponent(btnAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(btnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
 
         getContentPane().add(panBotones, java.awt.BorderLayout.CENTER);
@@ -146,6 +159,7 @@ public class vistaTipoUsuario extends javax.swing.JFrame {
     public javax.swing.JButton btnCerrar;
     public javax.swing.JButton btnCliente;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel panBotones;
     private javax.swing.JPanel panTitulo;

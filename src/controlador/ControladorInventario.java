@@ -12,6 +12,7 @@ import static General.Sistema.users;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Producto;
 import vista.vistaIngresarProd;
@@ -48,12 +49,33 @@ public class ControladorInventario {
         this.vista.btnEliminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int fila = vista.tblProd.getSelectedRow();
-                int col = vista.tblProd.getSelectedColumn();
-                String nomProd = vista.tblProd.getValueAt(fila, 1).toString();
-                sistemaProducto.eliminarProductoxNombre(nomProd);
-                iniciar();
-                limpiarControles();
+                try {
+                    int fila = vista.tblProd.getSelectedRow();
+                    int col = vista.tblProd.getSelectedColumn();
+                    String nomProd = vista.tblProd.getValueAt(fila, 1).toString();
+                    sistemaProducto.eliminarProductoxNombre(nomProd);
+                    iniciar();
+                    limpiarControles();
+                } catch (ArrayIndexOutOfBoundsException a) {
+                    System.out.println("No ha seleccionado un producto");
+                }
+
+            }
+        });
+
+        this.vista.btnEditar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int fila = vista.tblProd.getSelectedRow();
+                    int col = vista.tblProd.getSelectedColumn();
+                    String dato = vista.tblProd.getValueAt(fila, 1).toString();
+                    sistemaProducto.editarProducto(dato);
+                    limpiarControles();
+                } catch (ArrayIndexOutOfBoundsException a) {
+                    System.out.println("No ha seleccionado un producto");
+                }
+
             }
         });
 
@@ -66,6 +88,33 @@ public class ControladorInventario {
                 Sistema sistemaUsuario = new Sistema();
                 ControladorLoginAdmin cabrir = new ControladorLoginAdmin(abrir, admins, sistemaUsuario);
                 cabrir.iniciar();
+            }
+        });
+        
+        this.vista.btnRefrescar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String[][] datos = sistemaProducto.getDatos();
+                String[] cabecera = sistemaProducto.getCabecera();
+                DefaultTableModel modeloProducto = new DefaultTableModel(datos, cabecera);
+                vista.tblProd.setModel(modeloProducto);
+            }
+        });
+        
+        this.vista.btnBuscar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    String dato = JOptionPane.showInputDialog(null, "Ingrese el nombre del producto: ");
+                    String[][] datos = sistemaProducto.getDatosBusqueda(dato);
+                    String[] cabecera = sistemaProducto.getCabecera();
+                    DefaultTableModel modeloProducto = new DefaultTableModel(datos, cabecera);
+                    vista.tblProd.setModel(modeloProducto);
+                }
+                catch(NullPointerException a){
+                    System.out.println("Busqueda cancelada");
+                }
+                
             }
         });
     }
