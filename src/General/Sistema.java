@@ -8,6 +8,8 @@ package General;
 import java.util.ArrayList;
 import modelo.Producto;
 import modelo.Usuario;
+import modelo.usuario.IFactoryUsuario;
+import modelo.usuario.IUsuario;
 
 /**
  *
@@ -17,6 +19,8 @@ public class Sistema {
 
     //METODOS USUARIO
     public static Usuario conectado = null;
+    
+    public static ArrayList<IUsuario> iusers = new ArrayList<>();
 
     public static ArrayList<Usuario> users = new ArrayList();
     public static ArrayList<Usuario> admins = new ArrayList();
@@ -28,6 +32,16 @@ public class Sistema {
         users.add(usuario);
     }
 
+    public void registrarUsuario(IFactoryUsuario factory, String... datos) {
+        try {
+            IUsuario u = factory.crearUsuario(datos);
+            
+            iusers.add(u);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     //CLIENTE
     public int tamañoUsuario() {
         int result;
