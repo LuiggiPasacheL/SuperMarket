@@ -38,6 +38,8 @@ public class App {
         admins.add(admin_4);
         Usuario admin_5 = new Usuario("juan.alfaro", "admin5");
         admins.add(admin_5);
+        Usuario admin_6 = new Usuario("wilker.atalaya", "admin6");
+        admins.add(admin_6);
         
         
         //Creacion de productos
