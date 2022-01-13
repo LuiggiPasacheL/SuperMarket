@@ -171,6 +171,7 @@ public class vistaRegistro extends javax.swing.JFrame {
                     .addGroup(panCredencialesRLayout.createSequentialGroup()
                         .addComponent(lblApellido)
                         .addGap(40, 40, 40)))
+                .addGap(18, 18, 18)
                 .addGroup(panCredencialesRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panCredencialesRLayout.createSequentialGroup()
                         .addGroup(panCredencialesRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
