@@ -1,17 +1,8 @@
 
 import General.DatosProductos;
-import General.DatosUsuarios;
-import General.Sistema;
-import static General.Sistema.admins;
-import static General.Sistema.products;
-import static General.Sistema.users;
-import controlador.ControladorLogin;
 import controlador.ControladorTipoUsuario;
-import modelo.Producto;
-import modelo.Usuario;
-import modelo.usuario.Administrador;
+import modelo.producto.Producto;
 import modelo.usuario.FactoryAdministrador;
-import vista.vistaLogin;
 import vista.vistaTipoUsuario;
 
 /*
