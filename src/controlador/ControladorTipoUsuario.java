@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import General.DatosUsuarios;
 import General.Sistema;
 import static General.Sistema.admins;
 import static General.Sistema.users;
@@ -28,7 +29,7 @@ public class ControladorTipoUsuario {
         this.vista.btnAdministrador.addActionListener(e -> {
             vista.dispose();
             vistaLoginAdmin abrir = new vistaLoginAdmin();
-            Sistema sistemaUsuario = new Sistema();
+            DatosUsuarios sistemaUsuario = new DatosUsuarios();
             ControladorLoginAdmin cabrir = new ControladorLoginAdmin(abrir, sistemaUsuario);
             cabrir.iniciar();
         });
@@ -36,7 +37,7 @@ public class ControladorTipoUsuario {
         this.vista.btnCliente.addActionListener(e -> {
             vista.dispose();
             vistaLogin abrir = new vistaLogin();
-            Sistema sistemaUsuario = new Sistema();
+            DatosUsuarios sistemaUsuario = new DatosUsuarios();
             ControladorLogin cabrir = new ControladorLogin(abrir, sistemaUsuario);
             cabrir.iniciar();
         });

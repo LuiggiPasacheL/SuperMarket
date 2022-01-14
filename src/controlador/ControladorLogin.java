@@ -5,6 +5,8 @@
  */
 package controlador;
 
+import General.DatosProductos;
+import General.DatosUsuarios;
 import General.Sistema;
 import static General.Sistema.products;
 import static General.Sistema.users;
@@ -27,35 +29,33 @@ import vista.vistaTipoUsuario;
 public class ControladorLogin {
 
     private vistaLogin vista;
-    private Sistema sistemaUsuario;
+    private DatosUsuarios sistemaUsuario;
 
-    public ControladorLogin(vistaLogin vista, Sistema sistemaUsuario) {
+    public ControladorLogin(vistaLogin vista, DatosUsuarios sistemaUsuario) {
         this.vista = vista;
         this.sistemaUsuario = sistemaUsuario;
-        this.vista.btnIngresar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String usuario = vista.txtUsuario.getText();
-                String contraseña = vista.txtContraseña.getText();
-                if ("".equals(usuario) || "".equals(contraseña)) {
-                    JOptionPane.showMessageDialog(vista, "Campo(s) vacio(s), ingrese sus credenciales nuevamente");
+        this.vista.btnIngresar.addActionListener(e -> {
+
+            String usuario = vista.txtUsuario.getText();
+            String contraseña = vista.txtContraseña.getText();
+            if ("".equals(usuario) || "".equals(contraseña)) {
+                JOptionPane.showMessageDialog(vista, "Campo(s) vacio(s), ingrese sus credenciales nuevamente");
+            } else {
+                DatosUsuarios.conectado = sistemaUsuario.verificarSesion(vista.txtUsuario.getText(), vista.txtContraseña.getText());
+                if (DatosUsuarios.conectado != null) {
+                    Cliente cliente = (Cliente) sistemaUsuario.datosUsuario(usuario);
+                    System.out.println("Correcto, Bienvenido " + cliente.getNombre());
+                    vista.dispose();
+                    vistaProductos vista1 = new vistaProductos();
+                    DatosProductos s = new DatosProductos();
+                    ControladorProductos ci = new ControladorProductos(vista1, s);
+                    ci.iniciar();
+
                 } else {
-                    Sistema.conectado = sistemaUsuario.verificarSesion(vista.txtUsuario.getText(), vista.txtContraseña.getText());
-                    if (Sistema.conectado != null) {
-                        Cliente cliente = (Cliente) sistemaUsuario.datosUsuario(usuario);
-                        System.out.println("Correcto, Bienvenido " + cliente.getNombre());
-                        vista.dispose();
-                        vistaProductos vista = new vistaProductos();
-                        Sistema s = new Sistema();
-                        ControladorProductos ci = new ControladorProductos(vista, s);
-                        ci.iniciar();
-
-                    } else {
-                        JOptionPane.showMessageDialog(vista, "Campo(s) incorrecto(s), ingrese sus credenciales nuevamente");
-                    }
+                    JOptionPane.showMessageDialog(vista, "Campo(s) incorrecto(s), ingrese sus credenciales nuevamente");
                 }
-
             }
+
         });
 
         this.vista.btnRegistrarse.addActionListener(new ActionListener() {
@@ -63,7 +63,7 @@ public class ControladorLogin {
             public void actionPerformed(ActionEvent e) {
                 vista.dispose();
                 vistaRegistro registrar = new vistaRegistro();
-                Sistema s = new Sistema();
+                DatosUsuarios s = new DatosUsuarios();
                 ControladorRegistro cr = new ControladorRegistro(registrar, s);
                 cr.iniciar();
             }

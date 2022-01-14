@@ -5,6 +5,8 @@
  */
 package controlador;
 
+import General.DatosProductos;
+import General.DatosUsuarios;
 import General.Sistema;
 import static General.Sistema.products;
 import static General.Sistema.users;
@@ -25,9 +27,9 @@ import vista.vistaProductos;
 public class ControladorProductos {
 
     private vistaProductos vista;
-    private Sistema sistemaProducto;
+    private DatosProductos sistemaProducto;
 
-    public ControladorProductos(vistaProductos vista, Sistema sistemaProducto) {
+    public ControladorProductos(vistaProductos vista, DatosProductos sistemaProducto) {
         this.vista = vista;
         this.sistemaProducto = sistemaProducto;
 
@@ -51,10 +53,10 @@ public class ControladorProductos {
         });
 
         this.vista.btnVolver.addActionListener(e -> {
-            Sistema.conectado.cerrarSesion();
+            DatosUsuarios.conectado.cerrarSesion();
             vista.dispose();
             vistaLogin abrir = new vistaLogin();
-            Sistema sistemaUsuario = new Sistema();
+            DatosUsuarios sistemaUsuario = new DatosUsuarios();
             ControladorLogin cabrir = new ControladorLogin(abrir, sistemaUsuario);
             cabrir.iniciar();
         });

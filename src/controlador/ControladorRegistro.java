@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import General.DatosUsuarios;
 import General.Sistema;
 import static General.Sistema.users;
 import java.awt.event.ActionEvent;
@@ -26,7 +27,7 @@ public class ControladorRegistro {
 
     private vistaRegistro vista;
 
-    public ControladorRegistro(vistaRegistro vista, Sistema sistemaUsuario) {
+    public ControladorRegistro(vistaRegistro vista, DatosUsuarios sistemaUsuario) {
         this.vista = vista;
         this.vista.btnRegistrar.addActionListener(e -> {
             String nombre = vista.txtNombre.getText();
@@ -50,7 +51,7 @@ public class ControladorRegistro {
             sistemaUsuario.registrarUsuario(usuario1);
             vista.dispose();
             vistaLogin abrir = new vistaLogin();
-            Sistema s = new Sistema();
+            DatosUsuarios s = new DatosUsuarios();
             ControladorLogin cabrir = new ControladorLogin(abrir, s);
             cabrir.iniciar();
 
@@ -59,7 +60,7 @@ public class ControladorRegistro {
         this.vista.btnVolver.addActionListener(e -> {
             vista.dispose();
             vistaLogin abrir = new vistaLogin();
-            Sistema s = new Sistema();
+            DatosUsuarios s = new DatosUsuarios();
             ControladorLogin cAbrir = new ControladorLogin(abrir, s);
             cAbrir.iniciar();
         });

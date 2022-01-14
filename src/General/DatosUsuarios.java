@@ -1,33 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package General;
 
-import modelo.Producto;
-import modelo.Usuario;
 import modelo.producto.IProducto;
 import modelo.usuario.IUsuario;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author OSCAR
- */
-public class Sistema {
-
+public class DatosUsuarios {
     //METODOS USUARIO
     public static IUsuario conectado;
     public static IProducto productoSeleccionado;
     public static ArrayList<IUsuario> users = new ArrayList();
     public static ArrayList<IUsuario> admins = new ArrayList();
-    
+
     public void registrarUsuario(IUsuario usuario) {
         users.add(usuario);
     }
-    
+
     //CLIENTE
     public int tamañoUsuario() {
         int result;
@@ -117,75 +105,9 @@ public class Sistema {
         return result;
     }*/
 
-    //METODOS PRODUCTO
-    public static ArrayList<Producto> products = new ArrayList();
-    private final String[] cabecera = {"ID", "NOMBRE", "CANTIDAD", "TIPO", "PRECIO"};
-    int cod;
-
-    public void actualizarProducto(Producto producto) {
-        products.add(producto);
-    }
-
-    public int tamañoProducto() {
-        int result;
-        result = products.size();
-        return result;
-    }
-
-    public Producto getProducto(int i) {
-        return products.get(i);
-    }
-
-    public String[][] getDatos() {
-        String[][] result = new String[tamañoProducto()][5];
-        for (int i = 0; i < tamañoProducto(); i++) {
-            result[i][0] = getProducto(i).getId_producto();
-            result[i][1] = getProducto(i).getNombre_producto();
-            result[i][2] = String.valueOf(getProducto(i).getCantidad());
-            result[i][3] = getProducto(i).getTipo();
-            result[i][4] = Float.toString(getProducto(i).getPrecio());
-        }
-        return result;
-    }
-
-    public String[] getCabecera() {
-        return this.cabecera;
-    }
-
-    public void eliminarProductoxNombre(String nomProd) {
-        Usuario user = null;
-        for (int i = 0; i < this.tamañoProducto(); i++) {
-            if (nomProd.equals(this.getProducto(i).getNombre_producto())) {
-                products.remove(i);
-                break;
-            }
-        }
-    }
-
-    public int asignarCodigo() {
-        cod = this.tamañoProducto() + 1;
-        return cod;
-    }
-
-    public String[][] getDatosBusqueda(String dato) {
-        String[][] result = new String[tamañoProducto()][5];
-        for (int i = 0; i < tamañoProducto(); i++) {
-            if (dato.equalsIgnoreCase(getProducto(i).getNombre_producto())) {
-                result[i][0] = getProducto(i).getId_producto();
-                result[i][1] = getProducto(i).getNombre_producto();
-                result[i][2] = String.valueOf(getProducto(i).getCantidad());
-                result[i][3] = getProducto(i).getTipo();
-                result[i][4] = Float.toString(getProducto(i).getPrecio());
-            }
-        }
-        return result;
-    }
-    
-    public void vaciar(){
+    public void eliminarDatos(){
         users.removeAll(users);
         admins.removeAll(admins);
-        products.removeAll(products);
+
     }
-    
-    //TERMINAR TEST, TRY CATCH
 }

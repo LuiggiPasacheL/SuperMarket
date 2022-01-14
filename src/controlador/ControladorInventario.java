@@ -5,6 +5,8 @@
  */
 package controlador;
 
+import General.DatosProductos;
+import General.DatosUsuarios;
 import General.Sistema;
 import static General.Sistema.admins;
 import static General.Sistema.products;
@@ -26,17 +28,16 @@ import vista.vistaLoginAdmin;
 public class ControladorInventario {
 
     private vistaInventario vista;
-    private Sistema sistemaProducto;
+    DatosProductos sistemaProducto;
 
-    public ControladorInventario(vistaInventario vista, Sistema sistemaProducto) {
+    public ControladorInventario(vistaInventario vista, DatosProductos sistemaProducto) {
         this.vista = vista;
         this.sistemaProducto = sistemaProducto;
 
         this.vista.btnNuevo.addActionListener(e -> {
             vista.dispose();
             vistaIngresarProd vista1 = new vistaIngresarProd();
-            Sistema s = new Sistema();
-            ControladorIngresarProd ci = new ControladorIngresarProd(vista1, s, products);
+            ControladorIngresarProd ci = new ControladorIngresarProd(vista1, this.sistemaProducto);
             ci.iniciar();
         });
 
@@ -44,21 +45,18 @@ public class ControladorInventario {
             int fila = vista.tblProd.getSelectedRow();
             int col = vista.tblProd.getSelectedColumn();
             String nomProd = vista.tblProd.getValueAt(fila, 1).toString();
-            sistemaProducto.eliminarProductoxNombre(nomProd);
+            this.sistemaProducto.eliminarProductoxNombre(nomProd);
             iniciar();
             limpiarControles();
         });
 
-        this.vista.btnVolver.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Sistema.conectado.cerrarSesion();
-                vista.dispose();
-                vistaLoginAdmin abrir = new vistaLoginAdmin();
-                Sistema sistemaUsuario = new Sistema();
-                ControladorLoginAdmin cabrir = new ControladorLoginAdmin(abrir, sistemaUsuario);
-                cabrir.iniciar();
-            }
+        this.vista.btnVolver.addActionListener(e -> {
+            DatosUsuarios.conectado.cerrarSesion();
+            vista.dispose();
+            vistaLoginAdmin abrir = new vistaLoginAdmin();
+            DatosUsuarios sistemaUsuario = new DatosUsuarios();
+            ControladorLoginAdmin cabrir = new ControladorLoginAdmin(abrir, sistemaUsuario);
+            cabrir.iniciar();
         });
     }
 

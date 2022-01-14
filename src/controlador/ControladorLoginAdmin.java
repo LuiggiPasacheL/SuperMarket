@@ -5,6 +5,8 @@
  */
 package controlador;
 
+import General.DatosProductos;
+import General.DatosUsuarios;
 import General.Sistema;
 
 import static General.Sistema.admins;
@@ -30,11 +32,9 @@ import vista.vistaTipoUsuario;
 public class ControladorLoginAdmin {
 
     private vistaLoginAdmin vista;
-    ArrayList<IUsuario> usuario;
 
-    public ControladorLoginAdmin(vistaLoginAdmin vista, Sistema sistemaUsuario) {
+    public ControladorLoginAdmin(vistaLoginAdmin vista, DatosUsuarios datosUsuarios) {
         this.vista = vista;
-        this.usuario = Sistema.admins;
         this.vista.txtUsuario.requestFocus();
 
         this.vista.btnIngresar.addActionListener(e -> {
@@ -52,18 +52,18 @@ public class ControladorLoginAdmin {
                 return;
             }
 
-            Sistema.conectado = sistemaUsuario.verificarSesionAdmin(usuario, contraseña);
-            if(Sistema.conectado == null){
+            DatosUsuarios.conectado = datosUsuarios.verificarSesionAdmin(usuario, contraseña);
+            if(DatosUsuarios.conectado == null){
                 JOptionPane.showMessageDialog(vista, "Campo(s) incorrecto(s), ingrese sus credenciales nuevamente");
                 return;
             }
 
-            JOptionPane.showMessageDialog(vista,"Correcto, Bienvenido " + sistemaUsuario.datosAdmin(usuario).getUser());
+            JOptionPane.showMessageDialog(vista,"Correcto, Bienvenido " + datosUsuarios.datosAdmin(usuario).getUser());
 
             vista.dispose();
             vistaInventario vista1 = new vistaInventario();
-            Sistema s = new Sistema();
-            ControladorInventario ci = new ControladorInventario(vista1, sistemaUsuario);
+            DatosProductos datosProductos = new DatosProductos();
+            ControladorInventario ci = new ControladorInventario(vista1, datosProductos);
             ci.iniciar();
 
         });

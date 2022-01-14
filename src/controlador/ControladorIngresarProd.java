@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import General.DatosProductos;
 import General.Sistema;
 import static General.Sistema.products;
 import java.awt.event.ActionEvent;
@@ -22,50 +23,41 @@ import vista.vistaInventario;
 public class ControladorIngresarProd{
 
     private vistaIngresarProd vista;
-    private Sistema sistemaProducto;
-    ArrayList<Producto> producto;
+    private DatosProductos datosProductos;
 
-    public ControladorIngresarProd(vistaIngresarProd vista, Sistema sistemaProducto, ArrayList<Producto> producto) {
+    public ControladorIngresarProd(vistaIngresarProd vista, DatosProductos datosProductos) {
         this.vista = vista;
-        this.sistemaProducto = sistemaProducto;
-        this.producto = producto;
-        this.vista.btnVolver.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                vista.dispose();
-                vistaInventario vista = new vistaInventario();
-                Sistema s = new Sistema();
-                ControladorInventario ci = new ControladorInventario(vista, s);
-                ci.iniciar();
-            }
+        this.datosProductos = datosProductos;
+
+        this.vista.btnVolver.addActionListener(e -> {
+            vista.dispose();
+            vistaInventario vista12 = new vistaInventario();
+            ControladorInventario ci = new ControladorInventario(vista12, datosProductos);
+            ci.iniciar();
         });
 
-        this.vista.btnRegistrar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //TRAER
-                String nombre = vista.txtNom.getText();
-                String cantidad = vista.txtCant.getText();
-                String precio = vista.txtPre.getText();
-                String tipo = vista.txtTipo.getText();
-                if ("".equals(nombre) || "".equals(cantidad) || "".equals(precio) || "".equals(tipo)) {
-                    JOptionPane.showMessageDialog(vista, "Campo(s) vacio(s), ingrese los datos del producto correctamente");
-                } else {
-                    //CONVERSION
-                    String cod = String.valueOf(sistemaProducto.asignarCodigo());
-                    int cant = Integer.parseInt(cantidad);
-                    float pre = Float.valueOf(precio);
-                    //DESARROLLO
-                    Producto producto = new Producto(cod, nombre, pre, cant, tipo);
-                    sistemaProducto.actualizarProducto(producto);
-                    vista.dispose();
-                    vistaInventario vista = new vistaInventario();
-                    Sistema s = new Sistema();
-                    ControladorInventario ci = new ControladorInventario(vista, s);
-                    ci.iniciar();
-                }
-
+        this.vista.btnRegistrar.addActionListener(e -> {
+            //TRAER
+            String nombre = vista.txtNom.getText();
+            String cantidad = vista.txtCant.getText();
+            String precio = vista.txtPre.getText();
+            String tipo = vista.txtTipo.getText();
+            if ("".equals(nombre) || "".equals(cantidad) || "".equals(precio) || "".equals(tipo)) {
+                JOptionPane.showMessageDialog(vista, "Campo(s) vacio(s), ingrese los datos del producto correctamente");
+            } else {
+                //CONVERSION
+                String cod = String.valueOf(datosProductos.asignarCodigo());
+                int cant = Integer.parseInt(cantidad);
+                float pre = Float.valueOf(precio);
+                //DESARROLLO
+                Producto producto1 = new Producto(cod, nombre, pre, cant, tipo);
+                datosProductos.actualizarProducto(producto1);
+                vista.dispose();
+                vistaInventario vista1 = new vistaInventario();
+                ControladorInventario ci = new ControladorInventario(vista1, datosProductos);
+                ci.iniciar();
             }
+
         });
 
     }
