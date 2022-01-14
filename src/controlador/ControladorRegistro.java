@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
 import modelo.usuario.Cliente;
+import modelo.usuario.FactoryAdministrador;
+import modelo.usuario.FactoryCliente;
 import modelo.usuario.IUsuario;
 import org.jetbrains.annotations.NotNull;
 import vista.vistaLogin;
@@ -46,9 +48,12 @@ public class ControladorRegistro {
                 JOptionPane.showMessageDialog(vista, "El usuario ya existe, intentelo nuevamente");
                 return;
             }
-
-            IUsuario usuario1 = new Cliente(nombre, apellido, user, contraseña, direccion, telefono, correo);
-            sistemaUsuario.registrarUsuario(usuario1);
+            try {
+                FactoryCliente factoryCliente = new FactoryCliente();
+                factoryCliente.crearUsuario(nombre, apellido, user, contraseña, direccion, telefono, correo);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
             vista.dispose();
             vistaLogin abrir = new vistaLogin();
             DatosUsuarios s = new DatosUsuarios();

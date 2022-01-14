@@ -10,6 +10,7 @@ import controlador.ControladorTipoUsuario;
 import modelo.Producto;
 import modelo.Usuario;
 import modelo.usuario.Administrador;
+import modelo.usuario.FactoryAdministrador;
 import vista.vistaLogin;
 import vista.vistaTipoUsuario;
 
@@ -31,17 +32,17 @@ public class App {
     public static void main(String[] args) {
         
         //Creacion de administradores
-        Administrador admin_1 = new Administrador("oscar.yanfer", "admin1");
-        Administrador admin_2 = new Administrador("luiggi", "123456");
-        Administrador admin_3 = new Administrador("diego.montalvo", "admin3");
-        Administrador admin_4 = new Administrador("rodrigo.reyes", "admin4");
-        Administrador admin_5 = new Administrador("juan.alfaro", "admin5");
+        FactoryAdministrador factoryAdministrador = new FactoryAdministrador();
+        try {
+            factoryAdministrador.crearUsuario("oscar.yanfer", "admin1");
+            factoryAdministrador.crearUsuario("luiggi", "123456");
+            factoryAdministrador.crearUsuario("diego.montalvo", "admin3");
+            factoryAdministrador.crearUsuario("rodrigo.reyes", "admin4");
+            factoryAdministrador.crearUsuario("juan.alfaro", "admin5");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        DatosUsuarios.admins.add(admin_1);
-        DatosUsuarios.admins.add(admin_2);
-        DatosUsuarios.admins.add(admin_3);
-        DatosUsuarios.admins.add(admin_4);
-        DatosUsuarios.admins.add(admin_5);
         
         //Creacion de productos
         Producto p1 = new Producto("1", "Detergente", (float) 2.0, 12, "Articulos de limpieza");

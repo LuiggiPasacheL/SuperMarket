@@ -5,6 +5,8 @@
  */
 package modelo.usuario;
 
+import General.DatosUsuarios;
+
 /**
  *
  * @author luigg
@@ -19,8 +21,12 @@ public class FactoryAdministrador implements IFactoryUsuario{
         
         String usuario = datosUsuario[0];
         String contraseña = datosUsuario[1];
+
+        IUsuario admin = new Administrador(usuario, contraseña);
+
+        DatosUsuarios.admins.add(admin);
         
-        return new Administrador(usuario, contraseña);
+        return admin;
     }
 
 }

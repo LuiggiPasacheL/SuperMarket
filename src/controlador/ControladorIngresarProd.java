@@ -38,28 +38,30 @@ public class ControladorIngresarProd{
 
         this.vista.btnRegistrar.addActionListener(e -> {
             //TRAER
-            String nombre = vista.txtNom.getText();
-            String cantidad = vista.txtCant.getText();
-            String precio = vista.txtPre.getText();
-            String tipo = vista.txtTipo.getText();
-            if ("".equals(nombre) || "".equals(cantidad) || "".equals(precio) || "".equals(tipo)) {
-                JOptionPane.showMessageDialog(vista, "Campo(s) vacio(s), ingrese los datos del producto correctamente");
-            } else {
-                //CONVERSION
-                String cod = String.valueOf(datosProductos.asignarCodigo());
-                int cant = Integer.parseInt(cantidad);
-                float pre = Float.valueOf(precio);
-                //DESARROLLO
-                Producto producto1 = new Producto(cod, nombre, pre, cant, tipo);
-                datosProductos.actualizarProducto(producto1);
-                vista.dispose();
-                vistaInventario vista1 = new vistaInventario();
-                ControladorInventario ci = new ControladorInventario(vista1, datosProductos);
-                ci.iniciar();
+            try {
+                String nombre = vista.txtNom.getText();
+                String cantidad = vista.txtCant.getText();
+                String precio = vista.txtPre.getText();
+                String tipo = vista.txtTipo.getText();
+                if ("".equals(nombre) || "".equals(cantidad) || "".equals(precio) || "".equals(tipo)) {
+                    JOptionPane.showMessageDialog(vista, "Campo(s) vacio(s), ingrese los datos del producto correctamente");
+                } else {
+                    //CONVERSION
+                    String cod = String.valueOf(datosProductos.asignarCodigo());
+                    int cant = Integer.parseInt(cantidad);
+                    float pre = Float.valueOf(precio);
+                    //DESARROLLO
+                    Producto producto1 = new Producto(cod, nombre, pre, cant, tipo);
+                    datosProductos.actualizarProducto(producto1);
+                    vista.dispose();
+                    vistaInventario vista1 = new vistaInventario();
+                    ControladorInventario ci = new ControladorInventario(vista1, datosProductos);
+                    ci.iniciar();
+                }
+            } catch (NumberFormatException a) {
+                System.out.println("Datos incorrectos, intentelo nuevamente");
             }
-
         });
-
     }
 
     public void iniciar(){

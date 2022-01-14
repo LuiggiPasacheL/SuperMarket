@@ -5,6 +5,8 @@
  */
 package modelo.usuario;
 
+import General.DatosUsuarios;
+
 /**
  *
  * @author luigg
@@ -24,8 +26,13 @@ public class FactoryCliente implements IFactoryUsuario{
         String direccion = datosUsuario[4];
         String telefono = datosUsuario[5];
         String correo = datosUsuario[6];
-        
-        return new Cliente(nombre, apellido, usuario, contraseña, direccion, telefono, correo);
+
+        IUsuario cliente = new Cliente(nombre, apellido, usuario, contraseña, direccion, telefono, correo);
+
+        DatosUsuarios.users.add(cliente);
+
+        return cliente;
+
     }
 
 }

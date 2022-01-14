@@ -42,9 +42,11 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="340" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                  <EmptySpace pref="58" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -52,7 +54,10 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace pref="29" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -65,6 +70,13 @@
               <Font name="Tahoma" size="48" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Registro de Productos"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagenes/logo2_.jpg"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>
@@ -96,13 +108,8 @@
                       <Component id="lblCant" min="-2" max="-2" attributes="0"/>
                       <Component id="lblNom" min="-2" pref="345" max="-2" attributes="0"/>
                       <Component id="lblTipo" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtTipo" min="-2" pref="318" max="-2" attributes="0"/>
-                              <Component id="txtPre" min="-2" pref="318" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="txtTipo" min="-2" pref="318" max="-2" attributes="0"/>
+                      <Component id="txtPre" min="-2" pref="318" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="440" max="32767" attributes="0"/>
               </Group>
@@ -238,9 +245,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btnVolver" alignment="1" min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="btnRegistrar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="btnRegistrar" min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="35" max="32767" attributes="0"/>
               </Group>

@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
  */
 public class SistemaTest {
     
-    Sistema sistema;
+    DatosProductos sistema;
     
     Usuario u1;
     Usuario a1;

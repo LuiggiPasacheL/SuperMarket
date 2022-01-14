@@ -1,6 +1,8 @@
 package General;
 
 import modelo.producto.IProducto;
+import modelo.usuario.Cliente;
+import modelo.usuario.IFactoryUsuario;
 import modelo.usuario.IUsuario;
 
 import java.util.ArrayList;
@@ -14,6 +16,15 @@ public class DatosUsuarios {
 
     public void registrarUsuario(IUsuario usuario) {
         users.add(usuario);
+    }
+
+    public void registrarUsuario(IFactoryUsuario factory, String... datos) {
+        try {
+            factory.crearUsuario(datos);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     //CLIENTE

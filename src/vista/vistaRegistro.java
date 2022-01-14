@@ -5,6 +5,8 @@
  */
 package vista;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author OSCAR
@@ -16,6 +18,7 @@ public class vistaRegistro extends javax.swing.JFrame {
      */
     public vistaRegistro() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/imagenes/icono.png")).getImage());
         this.setLocationRelativeTo(this);
     }
 
@@ -30,6 +33,7 @@ public class vistaRegistro extends javax.swing.JFrame {
 
         panTituloR = new javax.swing.JPanel();
         lblTituloR = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         panCredencialesR = new javax.swing.JPanel();
         lblNombre = new javax.swing.JLabel();
         lblApellido = new javax.swing.JLabel();
@@ -58,20 +62,26 @@ public class vistaRegistro extends javax.swing.JFrame {
         lblTituloR.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         lblTituloR.setText("Crear una cuenta");
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo2_.jpg"))); // NOI18N
+
         javax.swing.GroupLayout panTituloRLayout = new javax.swing.GroupLayout(panTituloR);
         panTituloR.setLayout(panTituloRLayout);
         panTituloRLayout.setHorizontalGroup(
             panTituloRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panTituloRLayout.createSequentialGroup()
-                .addGap(140, 140, 140)
+                .addGap(96, 96, 96)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblTituloR)
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
         panTituloRLayout.setVerticalGroup(
             panTituloRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panTituloRLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTituloR)
+                .addGroup(panTituloRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(lblTituloR))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
@@ -235,6 +245,7 @@ public class vistaRegistro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnRegistrar;
     public javax.swing.JButton btnVolver;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblContraseña;
     private javax.swing.JLabel lblCorreo;
