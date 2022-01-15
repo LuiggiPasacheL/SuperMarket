@@ -6,18 +6,8 @@
 package controlador;
 
 import General.DatosUsuarios;
-import General.Sistema;
-import static General.Sistema.users;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import modelo.Usuario;
-import modelo.usuario.Cliente;
-import modelo.usuario.FactoryAdministrador;
 import modelo.usuario.FactoryCliente;
-import modelo.usuario.IUsuario;
-import org.jetbrains.annotations.NotNull;
 import vista.vistaLogin;
 import vista.vistaRegistro;
 

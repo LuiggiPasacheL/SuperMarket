@@ -7,16 +7,8 @@ package controlador;
 
 import General.DatosProductos;
 import General.DatosUsuarios;
-import General.Sistema;
-import static General.Sistema.products;
-import static General.Sistema.users;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import modelo.Producto;
-import vista.vistaIngresarProd;
-import vista.vistaInventario;
+import vista.vistaComprarProd;
 import vista.vistaLogin;
 import vista.vistaProductos;
 
@@ -34,7 +26,16 @@ public class ControladorProductos {
         this.sistemaProducto = sistemaProducto;
 
         this.vista.btnComprar.addActionListener(e -> {
-
+            vista.dispose();
+            vistaComprarProd siguiente = new vistaComprarProd();
+            int indexProductoSeleccionado = vista.tblProd.getSelectedRow();
+            if(indexProductoSeleccionado > 0){
+                ControladorVenta ctrlProductos = new ControladorVenta(siguiente, sistemaProducto.getProducto(indexProductoSeleccionado));
+                ctrlProductos.iniciar();
+            }
+            else{
+                System.err.println("No se ha seleccionado ningun producto");
+            }
         });
 
         this.vista.btnBuscar.addActionListener(e -> {

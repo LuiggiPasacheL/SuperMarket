@@ -6,11 +6,6 @@
 package controlador;
 
 import General.DatosUsuarios;
-import General.Sistema;
-import static General.Sistema.admins;
-import static General.Sistema.users;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import vista.vistaLogin;
 import vista.vistaLoginAdmin;
 import vista.vistaTipoUsuario;

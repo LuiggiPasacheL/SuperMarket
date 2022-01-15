@@ -76,13 +76,28 @@ public class Producto implements IProducto{
     }
 
     @Override
-    public void venta(int cantidad) {
+    public void ventaProducto(int cantidad) {
         this.cantidad -= cantidad;
     }
 
     @Override
     public void compra(int cantidad) {
         this.cantidad += cantidad;
+    }
+
+    @Override
+    public String getDescuento() {
+        return null;
+    }
+
+    @Override
+    public String getPromocion() {
+        return null;
+    }
+
+    @Override
+    public IProducto quitarDecorador() {
+        return null;
     }
     
 }

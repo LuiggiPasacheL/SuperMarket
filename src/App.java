@@ -3,6 +3,7 @@ import General.DatosProductos;
 import controlador.ControladorTipoUsuario;
 import modelo.producto.Producto;
 import modelo.usuario.FactoryAdministrador;
+import modelo.usuario.FactoryCliente;
 import vista.vistaTipoUsuario;
 
 /*
@@ -31,6 +32,14 @@ public class App {
             factoryAdministrador.crearUsuario("rodrigo.reyes", "admin4");
             factoryAdministrador.crearUsuario("juan.alfaro", "admin5");
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        FactoryCliente factoryCliente = new FactoryCliente();
+        try{
+            factoryCliente.crearUsuario("luiggi", "pasache", "luiggi", "123456", 
+                    "los olivos", "123456789", "luiggip2108@gmail.com");
+        }catch( Exception e){
             e.printStackTrace();
         }
 

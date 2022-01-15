@@ -20,7 +20,11 @@ public interface IProducto {
     public void setPrecio(float precio);
     public void setCantidad(int cantidad);
     public void setTipo(String tipo);
+    public String getDescuento();
+    public String getPromocion();
     
-    public void venta(int cantidad);
+    public void ventaProducto(int cantidad);
     public void compra(int cantidad);
+    
+    public IProducto quitarDecorador();
 }

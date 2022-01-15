@@ -6,13 +6,8 @@
 package controlador;
 
 import General.DatosProductos;
-import General.Sistema;
-import static General.Sistema.products;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import modelo.Producto;
+import modelo.producto.Producto;
 import vista.vistaIngresarProd;
 import vista.vistaInventario;
 

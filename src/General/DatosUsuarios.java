@@ -18,12 +18,13 @@ public class DatosUsuarios {
         users.add(usuario);
     }
 
-    public void registrarUsuario(IFactoryUsuario factory, String... datos) {
+    public IUsuario registrarUsuario(IFactoryUsuario factory, String... datos) {
         try {
-            factory.crearUsuario(datos);
+            return factory.crearUsuario(datos);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
 
     }
 

@@ -5,6 +5,9 @@
  */
 package modelo;
 
+import modelo.usuario.Administrador;
+import modelo.usuario.Cliente;
+import modelo.usuario.IUsuario;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,8 +21,8 @@ import static org.junit.Assert.*;
  */
 public class UsuarioTest {
     
-    Usuario usuarioIncompleto;
-    Usuario usuarioCompleto;
+    IUsuario usuarioIncompleto;
+    IUsuario usuarioCompleto;
     
     public UsuarioTest() {
     }
@@ -34,8 +37,8 @@ public class UsuarioTest {
     
     @Before
     public void setUp() {
-        usuarioIncompleto = new Usuario("testUser", "testPassword");
-        usuarioCompleto = new Usuario("completoN", "completoA", "testU", "testP", "testD", "testTel", "testC");
+        usuarioIncompleto = new Administrador("testUser", "testPassword");
+        usuarioCompleto = new Cliente("completoN", "completoA", "testU", "testP", "testD", "testTel", "testC");
     }
     
     @After
@@ -50,7 +53,7 @@ public class UsuarioTest {
         System.out.println("iniciarSesion");
         String user = usuarioIncompleto.getUser();
         String contraseña = usuarioIncompleto.getContraseña();
-        Usuario instance = usuarioIncompleto;
+        IUsuario instance = usuarioIncompleto;
         boolean expResult = true;
         boolean result = instance.iniciarSesion(user, contraseña);
         assertEquals(expResult, result);
@@ -62,7 +65,7 @@ public class UsuarioTest {
     @Test
     public void testCerrarSesion() {
         System.out.println("cerrarSesion");
-        Usuario instance = usuarioIncompleto;
+        IUsuario instance = usuarioIncompleto;
         usuarioIncompleto.iniciarSesion(usuarioIncompleto.getUser(), usuarioIncompleto.getContraseña());
         boolean expResult = true;
         boolean result = instance.cerrarSesion();
@@ -75,7 +78,7 @@ public class UsuarioTest {
     @Test
     public void testIsConectado() {
         System.out.println("isConectado");
-        Usuario instance = usuarioIncompleto;
+        IUsuario instance = usuarioIncompleto;
         usuarioIncompleto.iniciarSesion(usuarioIncompleto.getUser(), usuarioIncompleto.getContraseña());
         boolean expResult = true;
         boolean result = instance.isConectado();
@@ -88,7 +91,7 @@ public class UsuarioTest {
     @Test
     public void testGetNombre() {
         System.out.println("getNombre");
-        Usuario instance = usuarioCompleto;
+        Cliente instance = (Cliente) usuarioCompleto;
         String expResult = "completoN";
         String result = instance.getNombre();
         assertEquals(expResult, result);
@@ -101,9 +104,9 @@ public class UsuarioTest {
     public void testSetNombre() {
         System.out.println("setNombre");
         String nombre = "completoN1";
-        Usuario instance = usuarioCompleto;
+        Cliente instance = (Cliente) usuarioCompleto;
         instance.setNombre(nombre);
-        assertEquals(nombre, usuarioCompleto.getNombre());
+        assertEquals(nombre, instance.getNombre());
     }
 
     /**
@@ -112,7 +115,7 @@ public class UsuarioTest {
     @Test
     public void testGetApellido() {
         System.out.println("getApellido");
-        Usuario instance = usuarioCompleto;
+        Cliente instance = (Cliente) usuarioCompleto;
         String expResult = "completoA";
         String result = instance.getApellido();
         assertEquals(expResult, result);
@@ -125,7 +128,7 @@ public class UsuarioTest {
     public void testSetApellido() {
         System.out.println("setApellido");
         String apellido = "completoA1";
-        Usuario instance = usuarioCompleto;
+        Cliente instance = (Cliente) usuarioCompleto;
         instance.setApellido(apellido);
         assertEquals(apellido, instance.getApellido());
     }
@@ -136,7 +139,7 @@ public class UsuarioTest {
     @Test
     public void testGetUser() {
         System.out.println("getUser");
-        Usuario instance = usuarioIncompleto;
+        IUsuario instance = usuarioIncompleto;
         String expResult = "testUser";
         String result = instance.getUser();
         assertEquals(expResult, result);
@@ -149,7 +152,7 @@ public class UsuarioTest {
     public void testSetUser() {
         System.out.println("setUser");
         String user = "testUser1";
-        Usuario instance = usuarioIncompleto;
+        IUsuario instance = usuarioIncompleto;
         instance.setUser(user);
         assertEquals(user, instance.getUser());
     }
@@ -160,7 +163,7 @@ public class UsuarioTest {
     @Test
     public void testGetContraseña() {
         System.out.println("getContrase\u00f1a");
-        Usuario instance = usuarioIncompleto;
+        IUsuario instance = usuarioIncompleto;
         String expResult = "testPassword";
         String result = instance.getContraseña();
         assertEquals(expResult, result);
@@ -173,7 +176,7 @@ public class UsuarioTest {
     public void testSetContraseña() {
         System.out.println("setContrase\u00f1a");
         String contraseña = "testPassword1";
-        Usuario instance = usuarioIncompleto;
+        IUsuario instance = usuarioIncompleto;
         instance.setContraseña(contraseña);
         assertEquals(contraseña, instance.getContraseña());
     }
@@ -184,7 +187,7 @@ public class UsuarioTest {
     @Test
     public void testGetDireccion() {
         System.out.println("getDireccion");
-        Usuario instance = usuarioCompleto;
+        Cliente instance = (Cliente) usuarioCompleto;
         String expResult = "testD";
         String result = instance.getDireccion();
         assertEquals(expResult, result);
@@ -197,7 +200,7 @@ public class UsuarioTest {
     public void testSetDireccion() {
         System.out.println("setDireccion");
         String direccion = "testD1";
-        Usuario instance = usuarioCompleto;
+        Cliente instance = (Cliente) usuarioCompleto;
         instance.setDireccion(direccion);
         assertEquals(direccion, instance.getDireccion());
     }
@@ -208,7 +211,7 @@ public class UsuarioTest {
     @Test
     public void testGetTelefono() {
         System.out.println("getTelefono");
-        Usuario instance = usuarioCompleto;
+        Cliente instance = (Cliente) usuarioCompleto;
         String expResult = "testTel";
         String result = instance.getTelefono();
         assertEquals(expResult, result);
@@ -221,7 +224,7 @@ public class UsuarioTest {
     public void testSetTelefono() {
         System.out.println("setTelefono");
         String telefono = "testTel";
-        Usuario instance = usuarioCompleto;
+        Cliente instance = (Cliente) usuarioCompleto;
         instance.setTelefono(telefono);
         assertEquals(telefono, instance.getTelefono());
     }
@@ -232,7 +235,7 @@ public class UsuarioTest {
     @Test
     public void testGetCorreo() {
         System.out.println("getCorreo");
-        Usuario instance = usuarioCompleto;
+        Cliente instance = (Cliente) usuarioCompleto;
         String expResult = "testC";
         String result = instance.getCorreo();
         assertEquals(expResult, result);
@@ -245,7 +248,7 @@ public class UsuarioTest {
     public void testSetCorreo() {
         System.out.println("setCorreo");
         String correo = "testC1";
-        Usuario instance = usuarioCompleto;
+        Cliente instance = (Cliente) usuarioCompleto;
         instance.setCorreo(correo);
         assertEquals(correo, instance.getCorreo());
     }
@@ -256,8 +259,8 @@ public class UsuarioTest {
     @Test
     public void testGetConectado() {
         System.out.println("getConectado");
-        Usuario instance = usuarioCompleto;
-        usuarioCompleto.setConectado(Boolean.TRUE);
+        Cliente instance = (Cliente) usuarioCompleto;
+        instance.setConectado(Boolean.TRUE);
         Boolean expResult = true;
         Boolean result = instance.getConectado();
         assertEquals(expResult, result);
@@ -270,7 +273,7 @@ public class UsuarioTest {
     public void testSetConectado() {
         System.out.println("setConectado");
         Boolean conectado = true;
-        Usuario instance = usuarioCompleto;
+        Cliente instance = (Cliente) usuarioCompleto;
         instance.setConectado(conectado);
         assertEquals(conectado, instance.getConectado());
     }

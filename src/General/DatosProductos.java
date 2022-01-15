@@ -1,18 +1,16 @@
 package General;
 
-import modelo.Producto;
-import modelo.Usuario;
-
 import javax.swing.*;
 import java.util.ArrayList;
+import modelo.producto.IProducto;
 
 public class DatosProductos {
     //METODOS PRODUCTO
-    public static ArrayList<Producto> products = new ArrayList();
+    public static ArrayList<IProducto> products = new ArrayList();
     private final String[] cabecera = {"ID", "NOMBRE", "CANTIDAD", "TIPO", "PRECIO"};
     int cod;
 
-    public void actualizarProducto(Producto producto) {
+    public void actualizarProducto(IProducto producto) {
         products.add(producto);
     }
 
@@ -22,7 +20,7 @@ public class DatosProductos {
         return result;
     }
 
-    public Producto getProducto(int i) {
+    public IProducto getProducto(int i) {
         return products.get(i);
     }
 
@@ -43,7 +41,6 @@ public class DatosProductos {
     }
 
     public void eliminarProductoxNombre(String nomProd) {
-        Usuario user = null;
         for (int i = 0; i < this.tamañoProducto(); i++) {
             if (nomProd.equals(this.getProducto(i).getNombre_producto())) {
                 products.remove(i);

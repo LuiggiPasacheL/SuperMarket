@@ -5,6 +5,8 @@
  */
 package modelo;
 
+import modelo.producto.IProducto;
+import modelo.producto.Producto;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,7 +20,7 @@ import static org.junit.Assert.*;
  */
 public class ProductoTest {
     
-    Producto producto;
+    IProducto producto;
     
     @BeforeClass
     public static void setUpClass() {

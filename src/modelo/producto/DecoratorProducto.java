@@ -68,8 +68,8 @@ public abstract class DecoratorProducto implements IProducto {
     }
 
     @Override
-    public void venta(int cantidad) {
-        this.producto.venta(cantidad);
+    public void ventaProducto(int cantidad) {
+        this.producto.ventaProducto(cantidad);
     }
 
     @Override

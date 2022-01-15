@@ -34,7 +34,7 @@ public class ControladorVenta {
                 return;
             }
             
-            producto.venta(cantidad);
+            producto.ventaProducto(cantidad);
             int comprobar = confirmacionCompra();
             if(comprobar == 0){
                 JOptionPane.showMessageDialog(vista, "¡Gracias por comprar en SuperMarket!");

@@ -19,16 +19,27 @@ public class ProductoConPromocion extends DecoratorProducto{
     }
     
     @Override
-    public void venta(int cantidad) {
-        this.producto.venta(cantidad * promocion);
+    public void ventaProducto(int cantidad) {
+        this.producto.ventaProducto(cantidad * promocion);
     }
     
-    public int getPromocion(){
-        return promocion;
+    @Override
+    public String getPromocion(){
+        return (promocion) + "por 1";
     }
     
     public void setPromocion(int promocion){
         this.promocion = promocion;
+    }
+
+    @Override
+    public String getDescuento() {
+        return this.producto.getDescuento();
+    }
+
+    @Override
+    public IProducto quitarDecorador() {
+        return this.producto;
     }
 
 }

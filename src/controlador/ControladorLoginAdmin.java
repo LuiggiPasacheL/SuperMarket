@@ -7,23 +7,10 @@ package controlador;
 
 import General.DatosProductos;
 import General.DatosUsuarios;
-import General.Sistema;
-
-import static General.Sistema.admins;
-import static General.Sistema.products;
-import static General.Sistema.users;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-import modelo.Usuario;
-import modelo.usuario.IUsuario;
 import vista.vistaInventario;
-import vista.vistaLogin;
 import vista.vistaLoginAdmin;
-import vista.vistaRegistro;
 import vista.vistaTipoUsuario;
 
 /**
