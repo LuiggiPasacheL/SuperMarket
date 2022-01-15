@@ -6,7 +6,7 @@ import java.awt.event.MouseListener;
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import modelo.producto.CarritoCompra;
+import modelo.compras.CarritoCompra;
 import modelo.producto.IProducto;
 import modelo.producto.ProductoConDescuento;
 import vista.vistaCarrito;
@@ -54,11 +54,11 @@ public class ControladorCarrito {
             }
             
             productos.getProducto(indiceProductoSeleccionado).ventaProducto(cantidadAdquirirProdSeleccionado);
-            int comprobar = confirmacionCompra();
-            if(comprobar == 0){
-                JOptionPane.showMessageDialog(vista, "¡Gracias por comprar en SuperMarket!");
-                volver();
-            }            
+            
+            vista.dispose();
+            ControladorPago siguiente = new ControladorPago(productos);
+            siguiente.iniciar();
+                       
         });
         
         this.vista.spinnerCantidad.addChangeListener((ce) -> {

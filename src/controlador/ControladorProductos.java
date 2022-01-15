@@ -11,7 +11,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import modelo.producto.CarritoCompra;
+import modelo.compras.CarritoCompra;
 import vista.vistaCarrito;
 import vista.vistaComprarProd;
 import vista.vistaLogin;
