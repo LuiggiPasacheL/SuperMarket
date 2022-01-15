@@ -5,6 +5,8 @@
  */
 package modelo.usuario;
 
+import modelo.compras.Pago;
+
 /**
  *
  * @author luigg
@@ -19,6 +21,7 @@ public class Cliente implements IUsuario {
     private String telefono;
     private String correo;
     private Boolean conectado;
+    private Pago pago;
 
     public Cliente(String nombre, String apellido, String user, String contraseña,
             String direccion, String telefono, String correo) {
@@ -125,5 +128,13 @@ public class Cliente implements IUsuario {
 
     public void setConectado(Boolean conectado) {
         this.conectado = conectado;
+    }
+    
+    public void setPago(String nroTarjeta, String clave, String direccion){
+        this.pago = new Pago(nroTarjeta, clave, direccion);
+    }
+    
+    public Pago getCredencialesPago(){
+        return this.pago;
     }
 }

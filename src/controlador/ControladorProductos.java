@@ -7,7 +7,12 @@ package controlador;
 
 import General.DatosProductos;
 import General.DatosUsuarios;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelo.producto.CarritoCompra;
+import vista.vistaCarrito;
 import vista.vistaComprarProd;
 import vista.vistaLogin;
 import vista.vistaProductos;
@@ -20,22 +25,30 @@ public class ControladorProductos {
 
     private vistaProductos vista;
     private DatosProductos sistemaProducto;
+    private CarritoCompra carrito;
 
     public ControladorProductos(vistaProductos vista, DatosProductos sistemaProducto) {
         this.vista = vista;
         this.sistemaProducto = sistemaProducto;
+        carrito = new CarritoCompra();
 
         this.vista.btnComprar.addActionListener(e -> {
+
+            int[] indicesProductosSeleccionados = vista.tblProd.getSelectedRows();
+            for (int i = 0; i < indicesProductosSeleccionados.length; i++) {
+                carrito.añadirProducto(sistemaProducto.getProducto(i));
+            }
+            
+            if(indicesProductosSeleccionados.length <= 0){
+                JOptionPane.showMessageDialog(vista,"No se ha seleccionado ningun producto \n "
+                        + "Nota: Puede seleccionar productos presionando la tecla "
+                        + "control y haciendo click en el producto de la tabla");
+                return;
+            }
             vista.dispose();
-            vistaComprarProd siguiente = new vistaComprarProd();
-            int indexProductoSeleccionado = vista.tblProd.getSelectedRow();
-            if(indexProductoSeleccionado > 0){
-                ControladorVenta ctrlProductos = new ControladorVenta(siguiente, sistemaProducto.getProducto(indexProductoSeleccionado));
-                ctrlProductos.iniciar();
-            }
-            else{
-                System.err.println("No se ha seleccionado ningun producto");
-            }
+            vistaCarrito vCarrito = new vistaCarrito();
+            ControladorCarrito cCarrito = new ControladorCarrito(vCarrito, carrito);
+            cCarrito.iniciar();
         });
 
         this.vista.btnBuscar.addActionListener(e -> {
@@ -48,9 +61,44 @@ public class ControladorProductos {
 
         this.vista.btnRefrescar.addActionListener(e -> {
             String[][] datos = sistemaProducto.getDatos();
-            String[] cabecera = sistemaProducto.getCabecera();
+            String[] cabecera = sistemaProducto.getCabecera();            
+            vista.textProductosSeleccionados.setText("");
             DefaultTableModel modeloProducto = new DefaultTableModel(datos, cabecera);
             vista.tblProd.setModel(modeloProducto);
+        });
+        
+        this.vista.tblProd.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent me) {
+                int[] indicesProductosSeleccionados = vista.tblProd.getSelectedRows();
+                String productos = "";
+                for(int i = 0; i < indicesProductosSeleccionados.length; i++){
+                    productos += sistemaProducto.getProducto(indicesProductosSeleccionados[i]).getNombre_producto()
+                            + "\n";
+                    System.out.println(indicesProductosSeleccionados[i]);
+                }
+                vista.textProductosSeleccionados.setText(productos);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent me) {
+                
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent me) {
+                
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent me) {
+                
+            }
+
+            @Override
+            public void mouseExited(MouseEvent me) {
+                
+            }
         });
 
         this.vista.btnVolver.addActionListener(e -> {
