@@ -38,8 +38,8 @@ public class ControladorIngresarProd{
                 String cantidad = vista.txtCant.getText();
                 String precio = vista.txtPre.getText();
                 String tipo = vista.txtTipo.getText();
-                if ("".equals(nombre) || "".equals(cantidad) || "".equals(precio) || "".equals(tipo)) {
-                    JOptionPane.showMessageDialog(vista, "Campo(s) vacio(s), ingrese los datos del producto correctamente");
+                if ("".equals(nombre) || "".equals(cantidad) || "".equals(precio) || "".equals(tipo) || !validarNombre(nombre) || !validarTipo(tipo) || !validarCantidad(cantidad)) {
+                    JOptionPane.showMessageDialog(vista, "Campo(s) vacio(s), ingrese los datos del producto correctamente o esta utilizando un formato incorrecto");
                 } else {
                     //CONVERSION
                     String cod = String.valueOf(datosProductos.asignarCodigo());
@@ -62,6 +62,18 @@ public class ControladorIngresarProd{
     public void iniciar(){
         vista.setLocationRelativeTo(null);
         vista.setVisible(true);
+    }
+    
+    public boolean validarCantidad(String dato){ //YA
+        return dato.matches("[0-9]{1,100}");
+    }
+    
+    public boolean validarNombre(String dato){ //YA
+        return dato.matches("[a-zA-Z]{1,50}");
+    }
+    
+    public boolean validarTipo(String dato){ //YA
+        return dato.matches("[a-zA-Z]{1,50}");
     }
 
 }
