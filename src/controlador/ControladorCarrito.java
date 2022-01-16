@@ -105,7 +105,9 @@ public class ControladorCarrito {
         this.vista.tblProd.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent me) {
-                //Obtener producto seleciconado
+                
+                try {
+                    //Obtener producto seleciconado
                 indiceProductoSeleccionado = vista.tblProd.getSelectedRow();
                 productoSeleccionado = productos.getProducto(indiceProductoSeleccionado);
                 //Obtener cantidad del spinner
@@ -123,6 +125,9 @@ public class ControladorCarrito {
                     precioTotal += preciosProductosSeleccionados[i];
                 }
                 vista.txtPrecioTotal.setText(String.valueOf(precioTotal));
+                }catch(ArrayIndexOutOfBoundsException e){
+                    System.out.println("Algo salio mal, intentelo nuevamente");
+                }
             }
 
             @Override
