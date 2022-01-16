@@ -23,7 +23,7 @@ public class App {
      */
     public static void main(String[] args) {
         
-        //Creacion de administradores
+        //Creacion de administradores TERMINADO
         FactoryAdministrador factoryAdministrador = new FactoryAdministrador();
         try {
             factoryAdministrador.crearUsuario("oscar.yanfer", "admin1");
