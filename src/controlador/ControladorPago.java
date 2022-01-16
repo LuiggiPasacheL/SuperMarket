@@ -17,7 +17,7 @@ import vista.vistaProductos;
 
 /**
  *
- * @author luigg
+ * @author luigg cambios
  */
 public class ControladorPago {
     vistaPago vista;
