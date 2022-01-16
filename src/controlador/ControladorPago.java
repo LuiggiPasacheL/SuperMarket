@@ -9,6 +9,7 @@ import General.DatosProductos;
 import General.DatosUsuarios;
 import javax.swing.JOptionPane;
 import modelo.compras.CarritoCompra;
+import modelo.compras.Pago;
 import modelo.usuario.Cliente;
 import vista.vistaCarrito;
 import vista.vistaPago;
@@ -21,7 +22,8 @@ import vista.vistaProductos;
 public class ControladorPago {
     vistaPago vista;
     CarritoCompra carrito;
-
+    Cliente conectado;
+    
     public ControladorPago(CarritoCompra carrito, int[] cantidadesAdquirirProdSeleccionado) {
         vista = new vistaPago();
         this.carrito = carrito;
@@ -31,7 +33,9 @@ public class ControladorPago {
             String clave = vista.txtClave.getText();
             String direccion = vista.txtDireccion.getText();
             
-            if(numTarjeta.isEmpty() || clave.isEmpty() || direccion.isEmpty()){
+           
+            if(!validarTarjeta(numTarjeta) || !validarClave(clave) || !validarDirección(direccion)){
+                JOptionPane.showMessageDialog(vista, "Ingrese el formato correcto, intentelo nuevamente");
                 return;
             }
             
@@ -40,9 +44,9 @@ public class ControladorPago {
                 return;
             }
             
-            Cliente conectado = (Cliente) DatosUsuarios.conectado;
+            conectado = (Cliente) DatosUsuarios.conectado;
             conectado.setPago(numTarjeta, clave, direccion);
-            
+
             for(int i = 0; i < carrito.cantidadDeProductos(); i++){
                 carrito.getProducto(i).ventaProducto(cantidadesAdquirirProdSeleccionado[i]);
                 System.out.print(cantidadesAdquirirProdSeleccionado[i]);
@@ -61,6 +65,14 @@ public class ControladorPago {
     public void iniciar() {
         vista.setLocationRelativeTo(null);
         vista.setVisible(true);
+        
+        try{
+            vista.txtDireccion.setText(conectado.getPago().getDireccionPago());
+            vista.txtNumTarjeta.setText(conectado.getPago().getNroTarjeta());
+        }catch(NullPointerException ne){
+            
+        }
+        
     }
     
     private void volverAProductos(){
@@ -76,5 +88,17 @@ public class ControladorPago {
         vistaCarrito vCarrito = new vistaCarrito();
         ControladorCarrito cCarrito = new ControladorCarrito(vCarrito, carrito);
         cCarrito.iniciar();
+    }
+    
+    public boolean validarTarjeta(String dato){
+        return dato.matches("[0-9]{16}");
+    }
+    
+    public boolean validarClave(String dato){
+        return dato.matches("[0-9]{3}");
+    }
+    
+    public boolean validarDirección(String dato){
+        return dato.matches("[a-zA-Z]{1,50}");
     }
 }

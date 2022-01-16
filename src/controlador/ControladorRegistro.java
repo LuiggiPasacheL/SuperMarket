@@ -30,7 +30,8 @@ public class ControladorRegistro {
             String direccion = vista.txtDireccion.getText();
             String telefono = vista.txtTelefono.getText();
 
-            if (datosVacios(nombre, apellido, user, contraseña, correo, direccion, telefono)){
+            if (datosVacios(nombre, apellido, user, contraseña, correo, direccion, telefono) || !validarNombre(nombre) || !validarApellido(apellido) || !validarTelefono(telefono)){
+                JOptionPane.showMessageDialog(vista, "Utilize el formato correcto, intentelo nuevamente");
                 return;
             }
 
@@ -44,6 +45,7 @@ public class ControladorRegistro {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
+            JOptionPane.showMessageDialog(vista, "Cuenta creada correctamente");
             vista.dispose();
             vistaLogin abrir = new vistaLogin();
             DatosUsuarios s = new DatosUsuarios();
@@ -101,5 +103,19 @@ public class ControladorRegistro {
         vista.setLocationRelativeTo(null);
         vista.setVisible(true);
     }
+    
+    public boolean validarTelefono(String dato){ //YA
+        return dato.matches("[0-9]{9}");
+    }
+    
+    public boolean validarApellido(String dato){ //YA
+        return dato.matches("[a-zA-Z]{1,50}");
+    }
+    
+    public boolean validarNombre(String dato){ //YA
+        return dato.matches("[a-zA-Z]{1,50}");
+    }
+    
+    
 
 }
