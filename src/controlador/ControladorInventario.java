@@ -17,7 +17,7 @@ import vista.vistaLoginAdmin;
 
 /**
  *
- * @author OSCAR
+ * @author OSCAR REFNAY
  */
 public class ControladorInventario {
 

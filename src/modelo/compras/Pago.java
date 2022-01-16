@@ -44,4 +44,16 @@ public class Pago {
         this.direccionPago = direccionPago;
     }
     
+    public boolean validarTarjeta(String dato){
+        return dato.matches("[0-9]{1,16}");
+    }
+    
+    public boolean validarClave(String dato){
+        return dato.matches("[0-9]{1,3}");
+    }
+    
+    public boolean validarDirección(String dato){
+        return dato.matches("[a-zA-Z]{1,50}");
+    }
+    
 }

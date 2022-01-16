@@ -64,13 +64,13 @@ public class vistaPago extends javax.swing.JFrame {
         panTituloLayout.setHorizontalGroup(
             panTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panTituloLayout.createSequentialGroup()
-                .addGap(90, 90, 90)
+                .addGap(106, 106, 106)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblTitulo)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         panTituloLayout.setVerticalGroup(
             panTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,9 +105,47 @@ public class vistaPago extends javax.swing.JFrame {
         txtClave.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
         lblUsuario1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lblUsuario1.setText("Dirección de tarjeta:");
+        lblUsuario1.setText("Propietario de tarjeta:");
 
         txtDireccion.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+
+        javax.swing.GroupLayout panCredencialLayout = new javax.swing.GroupLayout(panCredencial);
+        panCredencial.setLayout(panCredencialLayout);
+        panCredencialLayout.setHorizontalGroup(
+            panCredencialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panCredencialLayout.createSequentialGroup()
+                .addGap(76, 76, 76)
+                .addGroup(panCredencialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
+                    .addComponent(txtNumTarjeta)
+                    .addGroup(panCredencialLayout.createSequentialGroup()
+                        .addGroup(panCredencialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblContraseña)
+                            .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(97, 97, 97))
+        );
+        panCredencialLayout.setVerticalGroup(
+            panCredencialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panCredencialLayout.createSequentialGroup()
+                .addGap(126, 126, 126)
+                .addComponent(lblUsuario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNumTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblContraseña)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(lblUsuario1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(134, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(panCredencial, java.awt.BorderLayout.CENTER);
 
         panBotones.setBackground(new java.awt.Color(255, 255, 255));
         panBotones.setPreferredSize(new java.awt.Dimension(700, 100));
@@ -132,7 +170,7 @@ public class vistaPago extends javax.swing.JFrame {
                 .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCompletarPago, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
         panBotonesLayout.setVerticalGroup(
             panBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,49 +182,7 @@ public class vistaPago extends javax.swing.JFrame {
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout panCredencialLayout = new javax.swing.GroupLayout(panCredencial);
-        panCredencial.setLayout(panCredencialLayout);
-        panCredencialLayout.setHorizontalGroup(
-            panCredencialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panCredencialLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panCredencialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panCredencialLayout.createSequentialGroup()
-                        .addGroup(panCredencialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblContraseña)
-                            .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panCredencialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtNumTarjeta, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtClave, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panCredencialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtDireccion)))
-                        .addGap(161, 161, 161))
-                    .addGroup(panCredencialLayout.createSequentialGroup()
-                        .addComponent(panBotones, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        panCredencialLayout.setVerticalGroup(
-            panCredencialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panCredencialLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(lblUsuario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNumTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblContraseña)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(lblUsuario1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
-                .addComponent(panBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        getContentPane().add(panCredencial, java.awt.BorderLayout.CENTER);
+        getContentPane().add(panBotones, java.awt.BorderLayout.PAGE_END);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

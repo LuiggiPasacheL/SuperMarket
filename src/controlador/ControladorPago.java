@@ -9,6 +9,7 @@ import General.DatosProductos;
 import General.DatosUsuarios;
 import javax.swing.JOptionPane;
 import modelo.compras.CarritoCompra;
+import modelo.compras.Pago;
 import modelo.usuario.Cliente;
 import vista.vistaCarrito;
 import vista.vistaPago;
@@ -31,7 +32,9 @@ public class ControladorPago {
             String clave = vista.txtClave.getText();
             String direccion = vista.txtDireccion.getText();
             
-            if(numTarjeta.isEmpty() || clave.isEmpty() || direccion.isEmpty()){
+           
+            if(!validarTarjeta(numTarjeta) || !validarClave(clave) || !validarDirección(direccion)){
+                JOptionPane.showMessageDialog(vista, "Ingrese el formato correcto, intentelo nuevamente");
                 return;
             }
             
@@ -76,5 +79,17 @@ public class ControladorPago {
         vistaCarrito vCarrito = new vistaCarrito();
         ControladorCarrito cCarrito = new ControladorCarrito(vCarrito, carrito);
         cCarrito.iniciar();
+    }
+    
+    public boolean validarTarjeta(String dato){
+        return dato.matches("[0-9]{16}");
+    }
+    
+    public boolean validarClave(String dato){
+        return dato.matches("[0-9]{3}");
+    }
+    
+    public boolean validarDirección(String dato){
+        return dato.matches("[a-zA-Z]{1,50}");
     }
 }

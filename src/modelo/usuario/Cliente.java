@@ -137,4 +137,32 @@ public class Cliente implements IUsuario {
     public Pago getCredencialesPago(){
         return this.pago;
     }
+    
+    public boolean validarNombre(String dato){ //YA
+        return dato.matches("[a-zA-Z]{1,50}");
+    }
+    
+    public boolean validarApellido(String dato){ //YA
+        return dato.matches("[a-zA-Z]{1,50}");
+    }
+    
+    public boolean validarUser(String dato){
+        return dato.matches("[a-zA-Z]{1,50}");
+    }
+    
+    public boolean validarCorreo(String dato){
+        return dato.matches("[a-zA-Z]{1,50}");
+    }
+    
+    public boolean validarContraseña(String dato){
+        return dato.matches("[a-zA-Z]{1,50}");
+    }
+    
+    public boolean validarTelefono(String dato){ //YA
+        return dato.matches("[0-9]{9}");
+    }
+    
+    public boolean validarDireccion(String dato){
+        return dato.matches("[a-zA-Z]{1,50}");
+    }
 }
