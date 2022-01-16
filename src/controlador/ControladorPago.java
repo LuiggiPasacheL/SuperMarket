@@ -6,8 +6,7 @@
 package controlador;
 
 import General.DatosProductos;
-import General.DatosUsuarios;
-import General.Sistema;
+import General.DatosUsuarios;   
 import javax.swing.JOptionPane;
 import modelo.compras.CarritoCompra;
 import modelo.compras.Pago;
