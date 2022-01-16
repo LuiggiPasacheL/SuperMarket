@@ -13,7 +13,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.compras.CarritoCompra;
 import vista.vistaCarrito;
-import vista.vistaComprarProd;
 import vista.vistaLogin;
 import vista.vistaProductos;
 
@@ -26,17 +25,18 @@ public class ControladorProductos {
     private vistaProductos vista;
     private DatosProductos sistemaProducto;
     private CarritoCompra carrito;
+    int[] indicesProductosSeleccionados;
 
     public ControladorProductos(vistaProductos vista, DatosProductos sistemaProducto) {
         this.vista = vista;
         this.sistemaProducto = sistemaProducto;
         carrito = new CarritoCompra();
+        indicesProductosSeleccionados = vista.tblProd.getSelectedRows();
 
         this.vista.btnComprar.addActionListener(e -> {
-
-            int[] indicesProductosSeleccionados = vista.tblProd.getSelectedRows();
+            
             for (int i = 0; i < indicesProductosSeleccionados.length; i++) {
-                carrito.añadirProducto(sistemaProducto.getProducto(i));
+                carrito.añadirProducto(sistemaProducto.getProducto(indicesProductosSeleccionados[i]));
             }
             
             if(indicesProductosSeleccionados.length <= 0){
@@ -70,7 +70,7 @@ public class ControladorProductos {
         this.vista.tblProd.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent me) {
-                int[] indicesProductosSeleccionados = vista.tblProd.getSelectedRows();
+                indicesProductosSeleccionados = vista.tblProd.getSelectedRows();
                 String productos = "";
                 for(int i = 0; i < indicesProductosSeleccionados.length; i++){
                     productos += sistemaProducto.getProducto(indicesProductosSeleccionados[i]).getNombre_producto()

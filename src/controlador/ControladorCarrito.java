@@ -53,10 +53,8 @@ public class ControladorCarrito {
                 return;
             }
             
-            productos.getProducto(indiceProductoSeleccionado).ventaProducto(cantidadAdquirirProdSeleccionado);
-            
             vista.dispose();
-            ControladorPago siguiente = new ControladorPago(productos);
+            ControladorPago siguiente = new ControladorPago(productos, cantidadesAdquirirProdSeleccionado);
             siguiente.iniciar();
                        
         });

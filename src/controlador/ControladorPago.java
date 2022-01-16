@@ -22,7 +22,7 @@ public class ControladorPago {
     vistaPago vista;
     CarritoCompra carrito;
 
-    public ControladorPago(CarritoCompra carrito) {
+    public ControladorPago(CarritoCompra carrito, int[] cantidadesAdquirirProdSeleccionado) {
         vista = new vistaPago();
         this.carrito = carrito;
         
@@ -42,6 +42,11 @@ public class ControladorPago {
             
             Cliente conectado = (Cliente) DatosUsuarios.conectado;
             conectado.setPago(numTarjeta, clave, direccion);
+            
+            for(int i = 0; i < carrito.cantidadDeProductos(); i++){
+                carrito.getProducto(i).ventaProducto(cantidadesAdquirirProdSeleccionado[i]);
+                System.out.print(cantidadesAdquirirProdSeleccionado[i]);
+            }
             
             JOptionPane.showMessageDialog(vista, "¡Gracias por comprar en SuperMarket!");
             volverAProductos();
