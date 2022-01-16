@@ -165,4 +165,8 @@ public class Cliente implements IUsuario {
     public boolean validarDireccion(String dato){
         return dato.matches("[a-zA-Z]{1,50}");
     }
+    
+    public Pago getPago(){
+        return this.pago;
+    }
 }

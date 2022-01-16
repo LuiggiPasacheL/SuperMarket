@@ -22,7 +22,8 @@ import vista.vistaProductos;
 public class ControladorPago {
     vistaPago vista;
     CarritoCompra carrito;
-
+    Cliente conectado;
+    
     public ControladorPago(CarritoCompra carrito, int[] cantidadesAdquirirProdSeleccionado) {
         vista = new vistaPago();
         this.carrito = carrito;
@@ -43,9 +44,9 @@ public class ControladorPago {
                 return;
             }
             
-            Cliente conectado = (Cliente) DatosUsuarios.conectado;
+            conectado = (Cliente) DatosUsuarios.conectado;
             conectado.setPago(numTarjeta, clave, direccion);
-            
+
             for(int i = 0; i < carrito.cantidadDeProductos(); i++){
                 carrito.getProducto(i).ventaProducto(cantidadesAdquirirProdSeleccionado[i]);
                 System.out.print(cantidadesAdquirirProdSeleccionado[i]);
@@ -64,6 +65,14 @@ public class ControladorPago {
     public void iniciar() {
         vista.setLocationRelativeTo(null);
         vista.setVisible(true);
+        
+        try{
+            vista.txtDireccion.setText(conectado.getPago().getDireccionPago());
+            vista.txtNumTarjeta.setText(conectado.getPago().getNroTarjeta());
+        }catch(NullPointerException ne){
+            
+        }
+        
     }
     
     private void volverAProductos(){
