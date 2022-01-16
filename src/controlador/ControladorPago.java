@@ -7,6 +7,7 @@ package controlador;
 
 import General.DatosProductos;
 import General.DatosUsuarios;
+import General.Sistema;
 import javax.swing.JOptionPane;
 import modelo.compras.CarritoCompra;
 import modelo.compras.Pago;
@@ -15,7 +16,7 @@ import vista.vistaCarrito;
 import vista.vistaPago;
 import vista.vistaProductos;
 
-/**
+/**  HOLA XD
  *
  * @author luigg cambios
  */
@@ -51,7 +52,6 @@ public class ControladorPago {
                 carrito.getProducto(i).ventaProducto(cantidadesAdquirirProdSeleccionado[i]);
                 System.out.print(cantidadesAdquirirProdSeleccionado[i]);
             }
-            
             JOptionPane.showMessageDialog(vista, "¡Gracias por comprar en SuperMarket!");
             volverAProductos();
         });
