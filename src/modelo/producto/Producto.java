@@ -16,9 +16,11 @@ public class Producto implements IProducto{
     private float precio;
     private int cantidad;
     private String tipo;
+    private static int id = 0;
 
-    public Producto(String id_producto, String nombre_producto, float precio, int cantidad, String tipo) {
-        this.id_producto = id_producto;
+    public Producto(String nombre_producto, float precio, int cantidad, String tipo) {
+        id++;
+        this.id_producto = String.valueOf(id);
         this.nombre_producto = nombre_producto;
         this.precio = precio;
         this.cantidad = cantidad;

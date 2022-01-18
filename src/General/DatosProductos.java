@@ -68,42 +68,53 @@ public class DatosProductos {
         return result;
     }
 
-    public void editarProducto(String dato) {
-        for (int i = 0; i < tamañoProducto(); i++) {
-            if (dato == getProducto(i).getNombre_producto()) {
-                try {
-                    int opc = Integer.parseInt(JOptionPane.showInputDialog(null, "Editar datos de " + getProducto(i).getNombre_producto() + ":\n" + "1. Nombre\n2. Cantidad\n3. Precio\n4. Tipo"));
-                    switch (opc) {
-                        case 1:
-                            String nombre = JOptionPane.showInputDialog(null, "Dato actual: " + getProducto(i).getNombre_producto() + "\nNuevo dato:");
-                            getProducto(i).setNombre_producto(nombre);
-                            JOptionPane.showMessageDialog(null, "Actualizado correctamente");
-                            break;
-                        case 2:
-                            int cantidad = Integer.parseInt(JOptionPane.showInputDialog(null, "Dato actual: " + getProducto(i).getCantidad() + "\nNuevo dato:"));
-                            getProducto(i).setCantidad(cantidad);
-                            JOptionPane.showMessageDialog(null, "Actualizado correctamente");
-                            break;
-                        case 3:
-                            float precio = Float.parseFloat(JOptionPane.showInputDialog(null, "Dato actual: " + getProducto(i).getPrecio() + "\nNuevo dato:"));
-                            getProducto(i).setPrecio(precio);
-                            JOptionPane.showMessageDialog(null, "Actualizado correctamente");
-                            break;
-                        case 4:
-                            String tipo = JOptionPane.showInputDialog(null, "Dato actual: " + getProducto(i).getTipo() + "\nNuevo dato:");
-                            getProducto(i).setTipo(tipo);
-                            JOptionPane.showMessageDialog(null, "Actualizado correctamente");
-                            break;
-                        default:
-                            break;
-                    }
-                } catch (NumberFormatException e) {
-                    System.out.println("Cancelar edición, intentelo nuevamente");
+    public void editarProducto(IProducto producto){
+        int opc = Integer.parseInt(JOptionPane.showInputDialog(null, "Editar datos de " + producto.getNombre_producto() + ":\n" + "1. Nombre\n2. Cantidad\n3. Precio\n4. Tipo"));
+        switch (opc) {
+            case 1:
+                String nombre = JOptionPane.showInputDialog(null, "Dato actual: " + producto.getNombre_producto() + "\nNuevo dato:");
+                if(nombre == null ){
+                    return;
                 }
-
-            }
+                if(nombre.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "No se pueden ingresar nombres vacios");
+                    return;
+                }
+                producto.setNombre_producto(nombre);
+                JOptionPane.showMessageDialog(null, "Actualizado correctamente");
+                break;
+            case 2:
+                try {
+                    int cantidad = Integer.parseInt(JOptionPane.showInputDialog(null, "Dato actual: " + producto.getCantidad() + "\nNuevo dato:"));
+                    JOptionPane.showMessageDialog(null, "Actualizado correctamente");
+                }catch (Exception e){
+                    JOptionPane.showMessageDialog(null, "No se puede ingresar cantidad vacia");
+                }
+                break;
+            case 3:
+                try{
+                    float precio = Float.parseFloat(JOptionPane.showInputDialog(null, "Dato actual: " + producto.getPrecio() + "\nNuevo dato:"));
+                    producto.setPrecio(precio);
+                    JOptionPane.showMessageDialog(null, "Actualizado correctamente");
+                }catch (Exception e){
+                    JOptionPane.showMessageDialog(null, "No se puede ingresar precio vacio");
+                }
+                break;
+            case 4:
+                String tipo = JOptionPane.showInputDialog(null, "Dato actual: " + producto.getTipo() + "\nNuevo dato:");
+                if(tipo == null){
+                    return;
+                }
+                if(tipo.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "No se pueden ingresar tipos vacios");
+                    return;
+                }
+                producto.setTipo(tipo);
+                JOptionPane.showMessageDialog(null, "Actualizado correctamente");
+                break;
+            default:
+                break;
         }
-
     }
 
     public void eliminarDatos(){

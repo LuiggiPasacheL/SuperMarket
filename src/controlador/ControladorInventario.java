@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
+import modelo.producto.IProducto;
 import vista.vistaIngresarProd;
 import vista.vistaInventario;
 import vista.vistaLoginAdmin;
@@ -58,8 +60,10 @@ public class ControladorInventario {
                 try {
                     int fila = vista.tblProd.getSelectedRow();
                     int col = vista.tblProd.getSelectedColumn();
-                    String dato = vista.tblProd.getValueAt(fila, 1).toString();
-                    sistemaProducto.editarProducto(dato);
+                    IProducto productoAEditar = sistemaProducto.getProducto(fila);
+                    //String nombreProducto = vista.tblProd.getValueAt(fila, 1).toString();
+                    sistemaProducto.editarProducto(productoAEditar);
+                    //sistemaProducto.editarProducto(nombreProducto);
                     limpiarControles();
                 } catch (ArrayIndexOutOfBoundsException a) {
                     System.out.println("No ha seleccionado un producto");

@@ -46,7 +46,7 @@ public class ControladorIngresarProd{
                     int cant = Integer.parseInt(cantidad);
                     float pre = Float.valueOf(precio);
                     //DESARROLLO
-                    Producto producto1 = new Producto(cod, nombre, pre, cant, tipo);
+                    Producto producto1 = new Producto(nombre, pre, cant, tipo);
                     datosProductos.actualizarProducto(producto1);
                     vista.dispose();
                     vistaInventario vista1 = new vistaInventario();

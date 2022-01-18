@@ -45,11 +45,11 @@ public class App {
 
         
         //Creacion de productos
-        Producto p1 = new Producto("1", "Detergente", (float) 2.0, 12, "Articulos de limpieza");
-        Producto p2 = new Producto("2", "Lejia", (float) 3.5, 12, "Articulos de limpieza");
-        Producto p3 = new Producto("3", "Sacagrasa", (float) 3.0, 12, "Articulos de limpieza");
-        Producto p4 = new Producto("4", "Deshumecedor", (float) 6.0, 12, "Articulos de limpieza");
-        Producto p5 = new Producto("5", "Ambientador", (float) 5.0, 12, "Articulos de limpieza");
+        Producto p1 = new Producto("Detergente", (float) 2.0, 12, "Articulos de limpieza");
+        Producto p2 = new Producto("Lejia", (float) 3.5, 12, "Articulos de limpieza");
+        Producto p3 = new Producto("Sacagrasa", (float) 3.0, 12, "Articulos de limpieza");
+        Producto p4 = new Producto("Deshumecedor", (float) 6.0, 12, "Articulos de limpieza");
+        Producto p5 = new Producto("Ambientador", (float) 5.0, 12, "Articulos de limpieza");
         DatosProductos.products.add(p1);
         DatosProductos.products.add(p2);
         DatosProductos.products.add(p3);
