@@ -1,0 +1,266 @@
+[33mcommit 7f125739aad12e1cb43bf84f9ef50c7b389d8f11[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Yanfer <oscar.yanfer@unmsm.edu.pe>
+Date:   Sat Jan 15 20:45:25 2022 -0500
+
+    Revert "Revert "terminado""
+    
+    This reverts commit f035f430f67aa4af594cab34588baf965baed481.
+
+[33mcommit f035f430f67aa4af594cab34588baf965baed481[m
+Author: Yanfer <oscar.yanfer@unmsm.edu.pe>
+Date:   Sat Jan 15 20:44:49 2022 -0500
+
+    Revert "terminado"
+    
+    This reverts commit 8e562436e7500446cc7dab7921e98996131e7549.
+
+[33mcommit 8e562436e7500446cc7dab7921e98996131e7549[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Yanfer <oscar.yanfer@unmsm.edu.pe>
+Date:   Sat Jan 15 20:24:53 2022 -0500
+
+    terminado
+
+[33mcommit 40555d4cac82f399ba51b6f6e8ad607f779ed891[m
+Author: Yanfer <oscar.yanfer@unmsm.edu.pe>
+Date:   Sat Jan 15 20:04:16 2022 -0500
+
+    casi terminando
+
+[33mcommit a3a865f18a7cde539f88d5249c07f4c60a0785ce[m
+Merge: 75bc70d 5799df8
+Author: Yanfer <oscar.yanfer@unmsm.edu.pe>
+Date:   Sat Jan 15 20:00:26 2022 -0500
+
+    Merge branch 'master' of https://github.com/LuiggiPasacheL/DSWG4
+
+[33mcommit 75bc70d8ad6e4fc4f13ef8e72c03acb6c5a1beb1[m
+Author: Yanfer <oscar.yanfer@unmsm.edu.pe>
+Date:   Sat Jan 15 19:59:48 2022 -0500
+
+    agregando
+
+[33mcommit 5799df837e70faff0e78f81f1eb1a4e58bfc919c[m
+Merge: b24302e fcdcab7
+Author: LuiggiPasacheL <luiggi.pasache@unmsm.edu.pe>
+Date:   Sat Jan 15 19:44:38 2022 -0500
+
+    Merge branch 'master' of github.com:LuiggiPasacheL/DSWG4
+
+[33mcommit b24302e28ab26be3c442d647f0e3c124a685002e[m
+Merge: d26cedc ff55542
+Author: LuiggiPasacheL <luiggi.pasache@unmsm.edu.pe>
+Date:   Sat Jan 15 19:35:32 2022 -0500
+
+    Merge branch 'master' of github.com:LuiggiPasacheL/DSWG4
+
+[33mcommit fcdcab79c699a11b391167c0871910c0bee964e0[m
+Merge: d26cedc ff55542
+Author: LuiggiPasacheL <luiggi.pasache@unmsm.edu.pe>
+Date:   Sat Jan 15 19:35:32 2022 -0500
+
+    Merge branch 'master' of github.com:LuiggiPasacheL/DSWG4
+
+[33mcommit d26cedc334d5fec9ced77b81a9a31f5222f0c7bb[m
+Author: LuiggiPasacheL <luiggi.pasache@unmsm.edu.pe>
+Date:   Sat Jan 15 19:35:00 2022 -0500
+
+    correccion de errores en compras
+
+[33mcommit ff5554226f2646334ec9dc06298267c6bf1bc84c[m
+Author: Yanfer <oscar.yanfer@unmsm.edu.pe>
+Date:   Sat Jan 15 18:42:40 2022 -0500
+
+    validando
+
+[33mcommit 77bf28dfa896dbecd73722c36df59131feb6c38d[m
+Author: LuiggiPasacheL <luiggi.pasache@unmsm.edu.pe>
+Date:   Sat Jan 15 16:55:16 2022 -0500
+
+    agregando Pago
+
+[33mcommit c1667e08fbddd052bcb868909f30f7fb63a1af35[m
+Author: LuiggiPasacheL <luiggi.pasache@unmsm.edu.pe>
+Date:   Sat Jan 15 16:17:50 2022 -0500
+
+    agregando controlador de productos funcional
+
+[33mcommit 3f0b24adfce84c44f7ab5c59a2cd927fea4c5e3e[m
+Author: LuiggiPasacheL <luiggi.pasache@unmsm.edu.pe>
+Date:   Sat Jan 15 16:17:11 2022 -0500
+
+    agregando carrito de compras funcional
+
+[33mcommit ec5c19076ca37f1316c627447df44a48c8eb1a98[m
+Author: LuiggiPasacheL <luiggi.pasache@unmsm.edu.pe>
+Date:   Fri Jan 14 19:10:16 2022 -0500
+
+    agregando CUS venta primera parte
+
+[33mcommit 3e2d160210f5c2ecff103939268ce035351bda5a[m
+Author: LuiggiPasacheL <luiggi.pasache@unmsm.edu.pe>
+Date:   Fri Jan 14 18:54:23 2022 -0500
+
+    agregando venta de productos
+
+[33mcommit ad8cf5107d49dec0eab83e1a67949246dabb421d[m
+Author: LuiggiPasacheL <luiggi.pasache@unmsm.edu.pe>
+Date:   Fri Jan 14 14:11:09 2022 -0500
+
+    corrigiendo tests
+
+[33mcommit 836bca24b6a042a821d8bb5a405ae14e88770ba8[m
+Merge: 13af63f f672365
+Author: LuiggiPasacheL <luiggi.pasache@unmsm.edu.pe>
+Date:   Fri Jan 14 00:09:10 2022 -0500
+
+    Merge branch 'master' of github.com:LuiggiPasacheL/DSWG4
+
+[33mcommit 13af63fe7de01f5bfc1b1c8db4889fd0d0e19051[m
+Author: LuiggiPasacheL <luiggi.pasache@unmsm.edu.pe>
+Date:   Thu Jan 13 23:18:26 2022 -0500
+
+    Division de datos
+
+[33mcommit d25f34807f5c39277084cfdb880119d21f88832a[m
+Author: LuiggiPasacheL <luiggi.pasache@unmsm.edu.pe>
+Date:   Thu Jan 13 18:28:58 2022 -0500
+
+    Refactorizando codigo
+
+[33mcommit f6723659dad57dc18c655d15046b5f598db97ea2[m
+Author: Yanfer <oscar.yanfer@unmsm.edu.pe>
+Date:   Thu Jan 13 18:19:25 2022 -0500
+
+    agregando wilker
+
+[33mcommit cb164736bcb712a041ebeb52a71825829715e7b6[m
+Author: Yanfer <oscar.yanfer@unmsm.edu.pe>
+Date:   Thu Jan 13 17:45:08 2022 -0500
+
+    agregando
+
+[33mcommit 761c4386b1b4a377567375768900c6a3d6369392[m
+Author: Yanfer <oscar.yanfer@unmsm.edu.pe>
+Date:   Thu Jan 13 17:43:05 2022 -0500
+
+    agregando varias cosas
+
+[33mcommit 492eae71921d1b74eb51295de92dd5bb2f6c23df[m
+Author: LuiggiPasacheL <luiggi.pasache@unmsm.edu.pe>
+Date:   Thu Jan 13 15:26:52 2022 -0500
+
+    correccion recursividad infinita factory
+
+[33mcommit dc33776b233a5769f3ce11ee0dc96048388501d5[m
+Author: LuiggiPasacheL <luiggi.pasache@unmsm.edu.pe>
+Date:   Wed Jan 12 18:46:30 2022 -0500
+
+    agregando (sin implementacion en el codigo) patron factory
+
+[33mcommit 46ccf166bd4e45772fa4d00e566630773b9e0998[m
+Author: LuiggiPasacheL <luiggi.pasache@unmsm.edu.pe>
+Date:   Mon Jan 10 21:40:14 2022 -0500
+
+    agregando pruebas
+
+[33mcommit 6be53eb18c2c20cb6071b064a5d905e4ee68f9ff[m
+Author: Yanfer <oscar.yanfer@unmsm.edu.pe>
+Date:   Sat Jan 8 20:54:50 2022 -0500
+
+    faltan los trycath y los test
+
+[33mcommit a55ca5ee034ea84b7c9959b9743f8114ccdd123c[m
+Author: Yanfer <oscar.yanfer@unmsm.edu.pe>
+Date:   Sat Jan 8 20:49:43 2022 -0500
+
+    avance
+
+[33mcommit d3066c70c03b06249b2f2f8782486d7a6d6ba912[m
+Author: Yanfer <oscar.yanfer@unmsm.edu.pe>
+Date:   Sat Jan 8 19:42:15 2022 -0500
+
+    gaa x2
+
+[33mcommit 016a7938d4bec53e03ae63ce9d79ec0b80fed095[m
+Author: Yanfer <oscar.yanfer@unmsm.edu.pe>
+Date:   Sat Jan 8 19:37:46 2022 -0500
+
+    gaa
+
+[33mcommit d31dafbf15f8e82e211e167eb5882c15f826107c[m
+Author: Yanfer <oscar.yanfer@unmsm.edu.pe>
+Date:   Sat Jan 8 19:36:14 2022 -0500
+
+    arreglando vistas
+
+[33mcommit e557c3d73d9bc7171f85306997f96b08192e9f00[m
+Author: Yanfer <oscar.yanfer@unmsm.edu.pe>
+Date:   Fri Jan 7 23:34:04 2022 -0500
+
+    avance, falta adornar y algunas validaciones
+
+[33mcommit 60523787e33066a37179ca95f3e0da5188356538[m
+Author: Yanfer <oscar.yanfer@unmsm.edu.pe>
+Date:   Fri Jan 7 22:07:31 2022 -0500
+
+    cu3
+
+[33mcommit 5802f8d5a2fc70f162315189e3b88c1e98dda88a[m
+Author: Yanfer <oscar.yanfer@unmsm.edu.pe>
+Date:   Fri Jan 7 19:46:31 2022 -0500
+
+    parte de CU3
+
+[33mcommit f133b1164eb5fecbb1a27a2bc5442d79ff8ef991[m
+Author: Yanfer <oscar.yanfer@unmsm.edu.pe>
+Date:   Fri Jan 7 17:23:34 2022 -0500
+
+    avance
+
+[33mcommit fc6fe4eda7c1904b097a43ea7b50b5cdbee62336[m
+Author: Yanfer <oscar.yanfer@unmsm.edu.pe>
+Date:   Fri Jan 7 16:08:54 2022 -0500
+
+    validando datos
+
+[33mcommit e572a98d14ae1bbc51a430bd4d64fcdd53a82a47[m
+Author: Yanfer <oscar.yanfer@unmsm.edu.pe>
+Date:   Fri Jan 7 15:13:01 2022 -0500
+
+    2 casos de uso
+
+[33mcommit 689d2adef14708a4fb938880053d89c0043938f0[m
+Author: TharlezMontalvo <75101071+TharlezMontalvo@users.noreply.github.com>
+Date:   Thu Oct 21 18:34:37 2021 -0500
+
+    GA
+
+[33mcommit d59d44cde357550ecfdb98b5b091470ca4d821b0[m
+Author: TharlezMontalvo <75101071+TharlezMontalvo@users.noreply.github.com>
+Date:   Thu Oct 21 18:20:56 2021 -0500
+
+    Update README.md
+
+[33mcommit 8a3662128bc1ce90b6be1fff5f2f22e3c0d6169e[m
+Author: TharlezMontalvo <75101071+TharlezMontalvo@users.noreply.github.com>
+Date:   Thu Oct 21 18:20:35 2021 -0500
+
+    Update README.md
+
+[33mcommit 837d41274bdc929f0df6347f4bd42a6cbd33d39b[m
+Author: TharlezMontalvo <75101071+TharlezMontalvo@users.noreply.github.com>
+Date:   Thu Oct 21 18:20:20 2021 -0500
+
+    Update README.md
+
+[33mcommit 4e4a563f7a97affc6d37a00bc99ba0607ad347bd[m
+Author: TharlezMontalvo <75101071+TharlezMontalvo@users.noreply.github.com>
+Date:   Thu Oct 21 18:18:29 2021 -0500
+
+    Update README.md
+
+[33mcommit 2e6f7df0049b2b6ae604449bbcf871990d2b62ce[m
+Author: Luiggi Pasache Lopera <74789714+LuiggiPasacheL@users.noreply.github.com>
+Date:   Thu Oct 21 18:07:08 2021 -0500
+
+    Initial commit
