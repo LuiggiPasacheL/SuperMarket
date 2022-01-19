@@ -32,7 +32,7 @@ public class ProductoTest {
     
     @Before
     public void setUp() {
-        producto = new Producto("1", "producto de prueba", 1, 1, "prueba");
+        producto = new Producto( "producto de prueba", 1, 1, "prueba");
     }
     
     @After

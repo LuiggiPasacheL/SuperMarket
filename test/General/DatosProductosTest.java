@@ -37,7 +37,7 @@ public class DatosProductosTest {
     @Before
     public void setUp() {
         datosProductos = new DatosProductos();
-        producto = new Producto("1", "prodTest", 1, 1, "prueba");
+        producto = new Producto("prodTest", 1, 1, "prueba");
         datosProductos.actualizarProducto(producto);
     }
     
@@ -150,9 +150,9 @@ public class DatosProductosTest {
     @Test
     public void testEditarProducto() {
         System.out.println("editarProducto");
-        String dato = "";
+        Producto prod = new Producto("Coca cola", (float) 2.5, 12, "Gaseosa");
         DatosProductos instance = datosProductos;
-        instance.editarProducto(dato);
+        instance.editarProducto(prod);
     }
     
 }
