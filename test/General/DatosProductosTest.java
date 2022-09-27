@@ -101,7 +101,7 @@ public class DatosProductosTest {
     @Test
     public void testGetCabecera() {
         System.out.println("getCabecera");
-        String[] expResult = {"ID", "NOMBRE", "CANTIDAD", "TIPO", "PRECIO"};;
+        String[] expResult = {"ID", "NOMBRE", "CANTIDAD", "TIPO", "PRECIO"};
         String[] result = datosProductos.getCabecera();
         assertArrayEquals(expResult, result);
     }

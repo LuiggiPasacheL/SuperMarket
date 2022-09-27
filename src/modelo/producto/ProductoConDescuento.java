@@ -27,7 +27,7 @@ public class ProductoConDescuento extends DecoratorProducto {
 
     @Override
     public String getPromocion() {
-        return this.getPromocion();
+        return this.producto.getPromocion();
     }
 
     @Override

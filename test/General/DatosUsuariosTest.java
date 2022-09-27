@@ -9,7 +9,6 @@ import modelo.usuario.Administrador;
 import modelo.usuario.Cliente;
 import modelo.usuario.FactoryAdministrador;
 import modelo.usuario.FactoryCliente;
-import modelo.usuario.IFactoryUsuario;
 import modelo.usuario.IUsuario;
 import org.junit.After;
 import org.junit.AfterClass;
